@@ -14,7 +14,7 @@
         .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: bold; cursor: pointer; }
         .logo span { color: var(--gold); }
 
-        .wa-float { position: fixed; bottom: 20px; right: 20px; background: var(--wa); color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 5000; text-decoration: none; }
+        .wa-float { position: fixed; bottom: 20px; right: 20px; background: var(--wa); color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 -5px 15px rgba(0,0,0,0.3); z-index: 5000; text-decoration: none; }
 
         .page { display: none; width: 100%; animation: fadeIn 0.3s ease-in; }
         .active-page { display: block !important; }
@@ -59,18 +59,32 @@
         <h1>PRETTY PEARL</h1>
         <p style="font-size: 0.6rem; letter-spacing: 2px;">LUXURY BOUTIQUE</p>
     </div>
-
     <div class="cat-selection">
-        <div class="cat-box" onclick="goToPage('fashion-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('fashion/hero.jpg'), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600') center/cover;">FASHION</div>
-        <div class="cat-box" onclick="goToPage('beauty-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('beauty/hero.jpg'), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600') center/cover;">BEAUTY</div>
+        <div class="cat-box" onclick="goToPage('fashion-selection-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600') center/cover;">FASHION</div>
+        <div class="cat-box" onclick="goToPage('beauty-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600') center/cover;">BEAUTY</div>
         <div class="cat-box" onclick="goToPage('soap-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('soaps/turmeric-soap.jpg') center/cover;">ORGANIC SOAPS</div>
     </div>
 </div>
 
-<div id="fashion-page" class="page">
+<div id="fashion-selection-page" class="page">
     <div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
-    <div class="section-title">Fashion Collection</div>
-    <div class="product-grid" id="fashion-list"></div>
+    <div class="section-title">Fashion Categories</div>
+    <div class="cat-selection">
+        <div class="cat-box" onclick="goToPage('clothes-page')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('fashion/clothes-hero.jpg'), url('https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=600') center/cover;">CLOTHES</div>
+        <div class="cat-box" onclick="goToPage('bags-page')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('fashion/bags-hero.jpg'), url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600') center/cover;">BAGS</div>
+    </div>
+</div>
+
+<div id="clothes-page" class="page">
+    <div style="padding:15px;"><button onclick="goToPage('fashion-selection-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
+    <div class="section-title">Luxury Clothes</div>
+    <div class="product-grid" id="clothes-list"></div>
+</div>
+
+<div id="bags-page" class="page">
+    <div style="padding:15px;"><button onclick="goToPage('fashion-selection-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
+    <div class="section-title">Designer Bags</div>
+    <div class="product-grid" id="bags-list"></div>
 </div>
 
 <div id="beauty-page" class="page">
@@ -92,7 +106,7 @@
         <div class="detail-info">
             <h2 id="d-title" style="font-family:'Playfair Display'; margin-bottom:5px;"></h2>
             <span id="d-price" style="color:var(--gold); font-size:1.4rem; font-weight:bold;"></span>
-            <p style="font-size: 0.8rem; color: #555; margin: 15px 0; line-height:1.5;">Premium quality selected specifically for the Pretty Pearl boutique. Hand-picked organic ingredients for a natural glow.</p>
+            <p style="font-size: 0.8rem; color: #555; margin: 15px 0; line-height:1.5;">Premium item from the Pretty Pearl collection.</p>
             <button class="buy-now-big" onclick="triggerMpesa()">LIPA NA M-PESA</button>
         </div>
     </div>
@@ -128,53 +142,47 @@
         goToPage('detail-page');
     }
 
-    // --- 1. SOAPS (Points to soaps/ folder) ---
-    const soapGrid = document.getElementById('soap-list');
-    const mySoaps = [
+    // --- PRODUCT LISTS ---
+
+    // 1. SOAPS
+    const soaps = [
         { name: "Rice Soap Moisturizer", price: 450, img: "soaps/rice-soap.jpg" },
         { name: "Kojic Acid Retinol Soap", price: 600, img: "soaps/kojic-soap.jpg" },
-        { name: "Dr. Rashel Vitamin C", price: 550, img: "soaps/vit-c-soap.jpg" },
-        { name: "Collagen Snail Soap", price: 500, img: "soaps/snail-soap.jpg" },
-        { name: "Dove Relaxing Coconut", price: 350, img: "soaps/dove-soap.jpg" },
-        { name: "Organic Turmeric Soap", price: 450, img: "soaps/turmeric-soap.jpg" },
-        { name: "Licorice Root Cleanser", price: 500, img: "soaps/licorice-soap.jpg" },
-        { name: "Gluta-C Intense Whitening", price: 650, img: "soaps/gluta-c.jpg" }
+        { name: "Organic Turmeric Soap", price: 450, img: "soaps/turmeric-soap.jpg" }
     ];
-    mySoaps.forEach(p => {
-        soapGrid.innerHTML += `<div class="product-card" onclick="openDetail('${p.name}', ${p.price}, '${p.img}', 'soap')">
-            <img src="${p.img}" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
-            <h3>${p.name}</h3>
-            <span>KSh ${p.price.toLocaleString()}</span>
-        </div>`;
-    });
 
-    // --- 2. FASHION (Points to fashion/ folder) ---
-    const fashionGrid = document.getElementById('fashion-list');
-    const myFashion = [
-        { name: "Silk Wrap Dress", price: 3500, img: "fassion/curl dress black.jpg" },
-        { name: "Luxe Handbag", price: 4200, img: "fassion/curl dress grey.jpg" }
+    // 2. CLOTHES
+    const clothes = [
+        { name: "Silk Wrap Dress", price: 3500, img: "fashion/dress1.jpg" },
+        { name: "Floral Summer Top", price: 1500, img: "fashion/top1.jpg" }
     ];
-    myFashion.forEach(p => {
-        fashionGrid.innerHTML += `<div class="product-card" onclick="openDetail('${p.name}', ${p.price}, '${p.img}', 'fashion')">
-            <img src="${p.img}" onerror="this.src='https://via.placeholder.com/150?text=Fashion'">
-            <h3>${p.name}</h3>
-            <span>KSh ${p.price.toLocaleString()}</span>
-        </div>`;
-    });
 
-    // --- 3. BEAUTY (Points to beauty/ folder) ---
-    const beautyGrid = document.getElementById('beauty-list');
-    const myBeauty = [
-        { name: "Glow Serum", price: 1800, img: "beauty/serum1.jpg" },
-        { name: "Organic Shea Butter", price: 1200, img: "beauty/shea.jpg" }
+    // 3. BAGS
+    const bags = [
+        { name: "Luxe Leather Tote", price: 4500, img: "fashion/bag1.jpg" },
+        { name: "Pearl Evening Clutch", price: 3200, img: "fashion/clutch1.jpg" }
     ];
-    myBeauty.forEach(p => {
-        beautyGrid.innerHTML += `<div class="product-card" onclick="openDetail('${p.name}', ${p.price}, '${p.img}', 'beauty')">
-            <img src="${p.img}" onerror="this.src='https://via.placeholder.com/150?text=Beauty'">
-            <h3>${p.name}</h3>
-            <span>KSh ${p.price.toLocaleString()}</span>
-        </div>`;
-    });
+
+    // 4. BEAUTY
+    const beauty = [
+        { name: "Glow Serum", price: 1800, img: "beauty/serum1.jpg" }
+    ];
+
+    // HELPER TO RENDER
+    function renderList(list, elementId, type) {
+        const grid = document.getElementById(elementId);
+        list.forEach(p => {
+            grid.innerHTML += `<div class="product-card" onclick="openDetail('${p.name}', ${p.price}, '${p.img}', '${type}')">
+                <img src="${p.img}" onerror="this.src='https://via.placeholder.com/150'">
+                <h3>${p.name}</h3><span>KSh ${p.price.toLocaleString()}</span>
+            </div>`;
+        });
+    }
+
+    renderList(soaps, 'soap-list', 'soap');
+    renderList(clothes, 'clothes-list', 'clothes');
+    renderList(bags, 'bags-list', 'bags');
+    renderList(beauty, 'beauty-list', 'beauty');
 
     function triggerMpesa() {
         document.getElementById('m-name').innerText = item.name;
@@ -187,7 +195,6 @@
     function confirmPayment() {
         let phone = document.getElementById('m-phone').value;
         if(phone.length < 10) return alert("Enter M-Pesa Number");
-        // WhatsApp notification - Ensure number is in format 254...
         window.open(`https://wa.me/254720289644?text=New Order: ${item.name} - KSh ${item.price} - M-Pesa: ${phone}`);
         closeModal();
     }
