@@ -193,7 +193,22 @@
 
 <div id="consult-page" class="page"><div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div><div class="section-title">Skin Advice</div><div style="padding:25px;"><textarea id="skin-text" class="feedback-input" style="min-height:150px;" placeholder="Tell us your skin concern..."></textarea><button onclick="sendAdvice()" class="buy-now-big" style="background:var(--wa);">CONSULT ON WHATSAPP</button></div></div>
 
-<div id="detail-page" class="page"><div style="padding:15px;"><button id="back-to-grid" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div><div style="padding:20px; text-align:center;"><img id="d-img" style="width:100%; height:350px; object-fit:cover; border-radius:15px;"><h2 id="d-title" style="font-family:'Playfair Display'; margin:15px 0 5px;"></h2><span id="d-price" style="color:var(--gold); font-size:1.5rem; font-weight:bold;"></span><button class="buy-now-big" style="background:var(--rose);" onclick="addToCart()">ADD TO BAG</button><button class="buy-now-big" onclick="openMpesa(false)">LIPA NA M-PESA</button></div></div>
+<div id="detail-page" class="page">
+    <div style="padding:15px;"><button id="back-to-grid" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
+    <div style="padding:20px; text-align:center;">
+        <img id="d-img" style="width:100%; height:350px; object-fit:cover; border-radius:15px;">
+        <h2 id="d-title" style="font-family:'Playfair Display'; margin:15px 0 5px;"></h2>
+        <span id="d-price" style="color:var(--gold); font-size:1.5rem; font-weight:bold;"></span>
+        
+        <div style="margin: 20px 0; text-align: left; background: white; padding: 15px; border-radius: 12px; border: 1px solid #eee;">
+            <h4 style="margin: 0 0 8px; font-size: 0.9rem; color: var(--rose); text-transform: uppercase; letter-spacing: 1px;">Product Description</h4>
+            <p id="d-desc" style="margin: 0; font-size: 0.85rem; color: #666; line-height: 1.6;"></p>
+        </div>
+
+        <button class="buy-now-big" style="background:var(--rose);" onclick="addToCart()">ADD TO BAG</button>
+        <button class="buy-now-big" onclick="openMpesa(false)">LIPA NA M-PESA</button>
+    </div>
+</div>
 
 <div id="mpesa-popup" class="overlay"><div class="popup-box"><h3 id="m-name"></h3><h2 id="m-price" style="color:var(--mpesa);"></h2><div style="background:#f9f9f9; padding:10px; border-radius:10px; margin-bottom:15px; border:1px dashed var(--mpesa);">Paybill: <b>247247</b><br>Account: <b>0720289644</b></div><input type="number" id="m-phone" placeholder="M-Pesa Number" style="width:100%; padding:15px; text-align:center; border:2px solid #eee; border-radius:12px;"><button class="buy-now-big" onclick="confirmOrder()">CONFIRM ORDER</button><p onclick="closePopup('mpesa-popup')" style="color:red; margin-top:20px; cursor:pointer;">Cancel</p></div></div>
 
@@ -204,20 +219,21 @@
     let currentItem = {};
     let cart = []; 
     let isCartMpesa = false;
-    let notificationActive = false; // Prevents badge from re-triggering animation/alert
+    let notificationActive = false;
 
     document.getElementById('main-wa-link').href = `https://wa.me/${MY_PHONE}`;
 
+    // ADDED DESCRIPTIONS TO THE PRODUCTS
     const products = {
         soap: [
-            { name: "Organic Rice Soap", price: 450, img: "soaps/rice-soap.jpg", inStock: true },
-            { name: "Kojic Retinol Bar", price: 600, img: "soaps/kojic-soap.jpg", inStock: false },
-            { name: "Turmeric Glow Bar", price: 450, img: "soaps/turmeric-soap.jpg", inStock: true }
+            { name: "Organic Rice Soap", price: 450, img: "soaps/rice-soap.jpg", inStock: true, desc: "Brightens and evens skin tone naturally using pure Thai rice extracts. Gentle for all skin types." },
+            { name: "Kojic Retinol Bar", price: 600, img: "soaps/kojic-soap.jpg", inStock: false, desc: "A powerful combination for skin resurfacing and targeting dark spots. Best used at night." },
+            { name: "Turmeric Glow Bar", price: 450, img: "soaps/turmeric-soap.jpg", inStock: true, desc: "Anti-inflammatory bar that brings out a natural radiance and helps with acne scars." }
         ],
-        clothes: [{ name: "Silk Wrap Gown", price: 3500, img: "fashion/dress1.jpg", inStock: true }],
-        bags: [{ name: "Luxe Tote Bag", price: 4500, img: "fashion/bag1.jpg", inStock: true }],
-        oil: [{ name: "Radiance Body Oil", price: 1200, img: "beauty/oil1.jpg", inStock: true }],
-        acc: [{ name: "Gold Stud Accents", price: 1200, img: "beauty/earring1.jpg", inStock: true }]
+        clothes: [{ name: "Silk Wrap Gown", price: 3500, img: "fashion/dress1.jpg", inStock: true, desc: "Elegant premium silk wrap dress. Perfect for both formal events and luxury lounging." }],
+        bags: [{ name: "Luxe Tote Bag", price: 4500, img: "fashion/bag1.jpg", inStock: true, desc: "High-quality leather tote with gold-tone hardware. Spacious enough for all your essentials." }],
+        oil: [{ name: "Radiance Body Oil", price: 1200, img: "beauty/oil1.jpg", inStock: true, desc: "Infused with essential minerals to give your skin a non-greasy, 24-hour glow." }],
+        acc: [{ name: "Gold Stud Accents", price: 1200, img: "beauty/earring1.jpg", inStock: true, desc: "Minimalist 18k gold plated studs. Hypoallergenic and timeless." }]
     };
 
     function checkPopup() { document.getElementById('welcome-popup').style.display = 'flex'; }
@@ -245,13 +261,11 @@
         cart.push({...currentItem});
         updateCartUI();
 
-        // 1. JUMP ANIMATION
         const bag = document.getElementById('floating-cart');
         bag.classList.remove('jump-active');
-        void bag.offsetWidth; // Reset animation
+        void bag.offsetWidth; 
         bag.classList.add('jump-active');
 
-        // 2. TRIGGER NOTIFICATION ONCE
         if (!notificationActive) {
             document.getElementById('cart-count-badge').style.display = "block";
             notificationActive = true;
@@ -263,7 +277,7 @@
         updateCartUI();
         if (cart.length === 0) {
             document.getElementById('cart-count-badge').style.display = "none";
-            notificationActive = false; // Allow it to re-trigger if bag was emptied
+            notificationActive = false;
         }
     }
 
@@ -300,16 +314,19 @@
         list.forEach(p => {
             const badge = p.inStock ? "" : `<div class="sold-out-badge">SOLD OUT</div>`;
             const opacity = p.inStock ? "" : "opacity:0.5; filter:grayscale(1);";
-            const action = p.inStock ? `onclick="openDetail('${p.name}', ${p.price}, '${p.img}', '${pageId}')"` : `onclick="alert('Out of stock!')"`;
+            // Updated action to pass the description
+            const action = p.inStock ? `onclick="openDetail('${p.name}', ${p.price}, '${p.img}', '${pageId}', '${p.desc || 'No description available.'}')"` : `onclick="alert('Out of stock!')"`;
             grid.innerHTML += `<div class="product-card" ${action} style="${opacity}">${badge}<img src="${p.img}" onerror="this.src='https://via.placeholder.com/150?text=Product'"><h3>${p.name}</h3><span>KSh ${p.price.toLocaleString()}</span></div>`;
         });
     }
 
-    function openDetail(name, price, img, parentId) {
-        currentItem = { name, price, img, parentId };
+    // UPDATED TO HANDLE DESCRIPTION
+    function openDetail(name, price, img, parentId, desc) {
+        currentItem = { name, price, img, parentId, desc };
         document.getElementById('d-title').innerText = name;
         document.getElementById('d-price').innerText = "KSh " + price.toLocaleString();
         document.getElementById('d-img').src = img;
+        document.getElementById('d-desc').innerText = desc;
         document.getElementById('back-to-grid').onclick = () => goToPage(parentId);
         goToPage('detail-page');
     }
