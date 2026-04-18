@@ -12,7 +12,7 @@
 
         /* --- IMMEDIATE POPUP SYSTEM --- */
         .overlay { 
-            display: none; /* Controlled by JS but set to flex on load */
+            display: none; 
             position: fixed; inset: 0; 
             background: rgba(0,0,0,0.85); 
             z-index: 10000; 
@@ -22,7 +22,6 @@
             backdrop-filter: blur(8px); 
         }
         
-        /* This ensures the welcome is visible immediately */
         #welcome-popup { display: flex; animation: fadeIn 0.3s ease-out; }
 
         .popup-box { background: white; width: 100%; max-width: 350px; padding: 40px 25px; border-radius: 25px; text-align: center; border: 2px solid var(--gold); position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
@@ -54,6 +53,7 @@
             text-shadow: 2px 2px 15px rgba(0,0,0,0.8); transition: 0.4s;
             border: 1px solid rgba(255,255,255,0.2);
             animation: float 4s ease-in-out infinite;
+            background-size: cover; background-position: center;
         }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
         .cat-box:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(212,175,55,0.3); border-color: var(--gold); }
@@ -112,9 +112,9 @@
     <div class="location-bar"><span>📍</span><div class="loc-text"><h4>Homa Bay Town</h4><p>Next to the Postal Office</p></div></div>
     <div class="consult-tile" onclick="goToPage('consult-page')">✨ Free Skin Consultation ✨</div>
     <div class="cat-selection">
-        <div class="cat-box" onclick="goToPage('fashion-selection')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600') center/cover;">FASHION</div>
-        <div class="cat-box" onclick="goToPage('beauty-selection')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600') center/cover;">BEAUTY</div>
-        <div class="cat-box" onclick="goToPage('soap-page')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600857062241-98e5dba7f214?w=600') center/cover;">SOAPS</div>
+        <div class="cat-box" onclick="goToPage('fashion-selection')" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600');">FASHION</div>
+        <div class="cat-box" onclick="goToPage('beauty-selection')" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600');">BEAUTY</div>
+        <div class="cat-box" onclick="goToPage('soap-page')" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600857062241-98e5dba7f214?w=600');">SOAPS</div>
     </div>
     <div class="feedback-section">
         <h3 style="font-family:'Playfair Display';">Special Requests</h3>
@@ -124,8 +124,16 @@
     </div>
 </div>
 
-<div id="fashion-selection" class="page"><div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div><div class="section-title">FASHION</div><div class="cat-selection"><div class="cat-box" onclick="goToPage('clothes-page')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=600') center/cover;">CLOTHES</div><div class="cat-box" onclick="goToPage('bags-page')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600') center/cover;">BAGS</div></div></div>
-<div id="beauty-selection" class="page"><div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div><div class="section-title">BEAUTY</div><div class="cat-selection"><div class="cat-box" onclick="goToPage('oil-page')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1610423985536-e4a8383f98c8?w=600') center/cover;">BODY OIL</div><div class="cat-box" onclick="goToPage('earrings-page')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1611085583191-a3b1181f9b3b?w=600') center/cover;">EARRINGS</div></div></div>
+<div id="beauty-selection" class="page">
+    <div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
+    <div class="section-title">BEAUTY</div>
+    <div class="cat-selection">
+        <div class="cat-box" onclick="goToPage('oil-page')" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600');">BODY OIL</div>
+        <div class="cat-box" onclick="goToPage('earrings-page')" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600');">EARRINGS</div>
+    </div>
+</div>
+
+<div id="fashion-selection" class="page"><div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div><div class="section-title">FASHION</div><div class="cat-selection"><div class="cat-box" onclick="goToPage('clothes-page')" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=600');">CLOTHES</div><div class="cat-box" onclick="goToPage('bags-page')" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600');">BAGS</div></div></div>
 
 <div id="clothes-page" class="page"><div style="padding:15px;"><button onclick="goToPage('fashion-selection')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div><div class="section-title">CLOTHES</div><div class="product-grid" id="clothes-list"></div></div>
 <div id="bags-page" class="page"><div style="padding:15px;"><button onclick="goToPage('fashion-selection')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div><div class="section-title">BAGS</div><div class="product-grid" id="bags-list"></div></div>
@@ -158,12 +166,7 @@
         earrings: [{ name: "Gold Stud Accents", price: 1200, img: "beauty/earring1.jpg", inStock: true }]
     };
 
-    // POPUP LOGIC
-    function checkPopup() {
-        // This ensures it is flex as soon as the body loads
-        document.getElementById('welcome-popup').style.display = 'flex';
-    }
-
+    function checkPopup() { document.getElementById('welcome-popup').style.display = 'flex'; }
     function closePopup(id) { document.getElementById(id).style.display = 'none'; }
 
     function goToPage(id) {
@@ -218,7 +221,6 @@
         window.open(`https://wa.me/${MY_PHONE}?text=Consultation: ${msg}`);
     }
 
-    // Initialize
     render(products.soap, 'soap-list', 'soap-page');
     render(products.clothes, 'clothes-list', 'clothes-page');
     render(products.bags, 'bags-list', 'bags-page');
