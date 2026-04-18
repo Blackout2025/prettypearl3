@@ -151,8 +151,8 @@
     // --- 2. FASHION (Points to fashion/ folder) ---
     const fashionGrid = document.getElementById('fashion-list');
     const myFashion = [
-        { name: "Silk Wrap Dress", price: 3500, img: "fashion/curl dress black.jpg" },
-        { name: "Luxe Handbag", price: 4200, img: "fashion/curl dress grey.jpg" }
+        { name: "Silk Wrap Dress", price: 3500, img: "fassion/curl dress black.jpg" },
+        { name: "Luxe Handbag", price: 4200, img: "fassion/curl dress grey.jpg" }
     ];
     myFashion.forEach(p => {
         fashionGrid.innerHTML += `<div class="product-card" onclick="openDetail('${p.name}', ${p.price}, '${p.img}', 'fashion')">
