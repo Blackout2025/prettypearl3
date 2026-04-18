@@ -10,6 +10,23 @@
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { margin: 0; background: var(--bg); color: #222; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
+        /* --- IMMEDIATE POPUP SYSTEM --- */
+        .overlay { 
+            display: none; /* Controlled by JS but set to flex on load */
+            position: fixed; inset: 0; 
+            background: rgba(0,0,0,0.85); 
+            z-index: 10000; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 20px; 
+            backdrop-filter: blur(8px); 
+        }
+        
+        /* This ensures the welcome is visible immediately */
+        #welcome-popup { display: flex; animation: fadeIn 0.3s ease-out; }
+
+        .popup-box { background: white; width: 100%; max-width: 350px; padding: 40px 25px; border-radius: 25px; text-align: center; border: 2px solid var(--gold); position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        
         header { background: white; padding: 10px 5%; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: bold; cursor: pointer; }
         .logo span { color: var(--gold); }
@@ -54,15 +71,34 @@
         .feedback-section { background: white; margin: 20px 5%; padding: 25px; border-radius: 15px; border: 1px solid #eee; text-align: center; }
         .feedback-input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; margin: 10px 0; font-family: 'Poppins'; }
         
-        .buy-now-big { background: var(--mpesa); color: white; border: none; width: 100%; padding: 18px; font-size: 1.1rem; font-weight: bold; border-radius: 12px; cursor: pointer; margin-top: 20px; }
-        #mpesa-popup { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 6000; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(5px); }
-        .popup-box { background: white; width: 100%; max-width: 340px; padding: 30px; border-radius: 20px; text-align: center; }
+        .buy-now-big { background: var(--mpesa); color: white; border: none; width: 100%; padding: 18px; font-size: 1.1rem; font-weight: bold; border-radius: 12px; cursor: pointer; margin-top: 10px; }
         
         footer { background: #111; color: #888; padding: 30px 5%; text-align: center; font-size: 0.7rem; line-height: 1.6; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body>
+<body onload="checkPopup()">
+
+<div id="welcome-popup" class="overlay">
+    <div class="popup-box">
+        <h2 style="font-style: italic; margin-bottom: 0;">Welcome | Karibu</h2>
+        <h1 style="font-family:'Playfair Display'; font-size: 1.8rem; margin: 10px 0;">PRETTY PEARL</h1>
+        <p style="color:#666; font-size: 0.85rem; line-height: 1.6;">
+            Discover luxury fashion and skincare in Homa Bay.<br>
+            <b>Pata uremo na mavazi ya kisasa hapa Homa Bay.</b>
+        </p>
+        <button class="buy-now-big" style="background:var(--rose);" onclick="closePopup('welcome-popup')">EXPLORE NOW</button>
+    </div>
+</div>
+
+<div id="thanks-popup" class="overlay">
+    <div class="popup-box" style="border-color: var(--mpesa);">
+        <div style="font-size: 3rem;">💖</div>
+        <h2 style="font-family:'Playfair Display';">Asante!</h2>
+        <p style="color:#666; font-size: 0.85rem;">Your request has been sent to WhatsApp. We will contact you shortly!</p>
+        <button class="buy-now-big" style="background:var(--mpesa);" onclick="closePopup('thanks-popup')">CONTINUE</button>
+    </div>
+</div>
 
 <header>
     <div class="logo" onclick="goToPage('home-page')">PRETTY <span>PEARL</span></div>
@@ -101,18 +137,15 @@
 
 <div id="detail-page" class="page"><div style="padding:15px;"><button id="back-to-grid" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div><div style="padding:20px;"><img id="d-img" style="width:100%; height:350px; object-fit:cover; border-radius:15px;"><h2 id="d-title" style="font-family:'Playfair Display'; margin:15px 0 5px;"></h2><span id="d-price" style="color:var(--gold); font-size:1.5rem; font-weight:bold;"></span><button class="buy-now-big" onclick="openMpesa()">LIPA NA M-PESA</button></div></div>
 
-<div id="mpesa-popup"><div class="popup-box"><h3 id="m-name"></h3><h2 id="m-price" style="color:var(--mpesa);"></h2><input type="number" id="m-phone" placeholder="M-Pesa Number" style="width:100%; padding:15px; text-align:center; border:2px solid #eee; border-radius:12px;"><button class="buy-now-big" onclick="confirmOrder()">CONFIRM ORDER</button><p onclick="closeMpesa()" style="color:red; margin-top:20px; cursor:pointer;">Cancel</p></div></div>
+<div id="mpesa-popup" class="overlay"><div class="popup-box"><h3 id="m-name"></h3><h2 id="m-price" style="color:var(--mpesa);"></h2><input type="number" id="m-phone" placeholder="M-Pesa Number" style="width:100%; padding:15px; text-align:center; border:2px solid #eee; border-radius:12px;"><button class="buy-now-big" onclick="confirmOrder()">CONFIRM ORDER</button><p onclick="closePopup('mpesa-popup')" style="color:red; margin-top:20px; cursor:pointer;">Cancel</p></div></div>
 
 <footer><p><b>PRETTY PEARL LUXE BOUTIQUE</b><br>Homa Bay Town - Next to the Postal Office<br>© 2026 Pretty Pearl</p></footer>
 
 <script>
-    // 1. SET YOUR PHONE NUMBER HERE
     const MY_PHONE = "254700000000"; 
-    
     let currentItem = {};
     document.getElementById('main-wa-link').href = `https://wa.me/${MY_PHONE}`;
 
-    // 2. PRODUCT DATA (Set inStock to false to show "Sold Out")
     const products = {
         soap: [
             { name: "Organic Rice Soap", price: 450, img: "soaps/rice-soap.jpg", inStock: true },
@@ -124,6 +157,14 @@
         oil: [{ name: "Radiance Body Oil", price: 1200, img: "beauty/oil1.jpg", inStock: true }],
         earrings: [{ name: "Gold Stud Accents", price: 1200, img: "beauty/earring1.jpg", inStock: true }]
     };
+
+    // POPUP LOGIC
+    function checkPopup() {
+        // This ensures it is flex as soon as the body loads
+        document.getElementById('welcome-popup').style.display = 'flex';
+    }
+
+    function closePopup(id) { document.getElementById(id).style.display = 'none'; }
 
     function goToPage(id) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
@@ -137,14 +178,8 @@
         list.forEach(p => {
             const badge = p.inStock ? "" : `<div class="sold-out-badge">SOLD OUT</div>`;
             const opacity = p.inStock ? "" : "opacity:0.5; filter:grayscale(1);";
-            const action = p.inStock ? `onclick="openDetail('${p.name}', ${p.price}, '${p.img}', '${pageId}')"` : `onclick="alert('Out of stock! Please request a restock below.')"`;
-            
-            grid.innerHTML += `
-                <div class="product-card" ${action} style="${opacity}">
-                    ${badge}
-                    <img src="${p.img}" onerror="this.src='https://via.placeholder.com/150?text=Product'">
-                    <h3>${p.name}</h3><span>KSh ${p.price.toLocaleString()}</span>
-                </div>`;
+            const action = p.inStock ? `onclick="openDetail('${p.name}', ${p.price}, '${p.img}', '${pageId}')"` : `onclick="alert('Out of stock!')"`;
+            grid.innerHTML += `<div class="product-card" ${action} style="${opacity}">${badge}<img src="${p.img}" onerror="this.src='https://via.placeholder.com/150?text=Product'"><h3>${p.name}</h3><span>KSh ${p.price.toLocaleString()}</span></div>`;
         });
     }
 
@@ -157,32 +192,33 @@
         goToPage('detail-page');
     }
 
-    function sendFeedback() {
-        const msg = document.getElementById('feedback-text').value;
-        if(!msg) return alert("Please type something!");
-        window.open(`https://wa.me/${MY_PHONE}?text=Feedback/Request: ${msg}`);
-    }
-
-    function sendAdvice() {
-        const msg = document.getElementById('skin-text').value;
-        if(!msg) return alert("Please type your concern!");
-        window.open(`https://wa.me/${MY_PHONE}?text=Skincare Consultation: ${msg}`);
-    }
-
     function openMpesa() {
         document.getElementById('m-name').innerText = currentItem.name;
         document.getElementById('m-price').innerText = "KSh " + currentItem.price.toLocaleString();
         document.getElementById('mpesa-popup').style.display = 'flex';
     }
-    function closeMpesa() { document.getElementById('mpesa-popup').style.display = 'none'; }
+
     function confirmOrder() {
         const phone = document.getElementById('m-phone').value;
         if(phone.length < 10) return alert("Enter valid phone");
         window.open(`https://wa.me/${MY_PHONE}?text=Order: ${currentItem.name}%0APhone: ${phone}`);
-        closeMpesa();
+        closePopup('mpesa-popup');
+        document.getElementById('thanks-popup').style.display = 'flex';
     }
 
-    // Load everything
+    function sendFeedback() {
+        const msg = document.getElementById('feedback-text').value;
+        if(!msg) return alert("Please type something!");
+        window.open(`https://wa.me/${MY_PHONE}?text=Feedback: ${msg}`);
+    }
+
+    function sendAdvice() {
+        const msg = document.getElementById('skin-text').value;
+        if(!msg) return alert("Please type your concern!");
+        window.open(`https://wa.me/${MY_PHONE}?text=Consultation: ${msg}`);
+    }
+
+    // Initialize
     render(products.soap, 'soap-list', 'soap-page');
     render(products.clothes, 'clothes-list', 'clothes-page');
     render(products.bags, 'bags-list', 'bags-page');
