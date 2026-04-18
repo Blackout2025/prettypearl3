@@ -11,7 +11,7 @@
         body { margin: 0; background: var(--bg); color: #222; font-family: 'Poppins', sans-serif; overflow-x: hidden; width: 100%; }
 
         header { background: white; padding: 10px 5%; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: bold; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: bold; cursor: pointer; }
         .logo span { color: var(--gold); }
 
         .wa-float { position: fixed; bottom: 20px; right: 20px; background: var(--wa); color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 5000; text-decoration: none; }
@@ -29,14 +29,14 @@
         .section-title { padding: 20px 15px 5px; font-family: 'Playfair Display'; font-size: 1.5rem; color: var(--rose); text-align: center; }
 
         .product-grid { padding: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .product-card { background: white; padding: 10px; border-radius: 10px; border: 1px solid #eee; text-align: center; }
+        .product-card { background: white; padding: 10px; border-radius: 10px; border: 1px solid #eee; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
         .product-card img { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; }
         .product-card h3 { font-size: 0.75rem; margin: 8px 0 4px; font-weight: 600; color: #333; }
         .product-card span { font-weight: bold; color: var(--gold); font-size: 0.85rem; }
 
-        .detail-container { padding: 20px; background: white; }
+        .detail-container { padding: 20px; background: white; min-height: 80vh; }
         .detail-img { width: 100%; height: 350px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; }
-        .buy-now-big { background: var(--mpesa); color: white; border: none; width: 100%; padding: 18px; font-size: 1.1rem; font-weight: bold; border-radius: 10px; margin-top: 20px; box-shadow: 0 4px 10px rgba(73, 176, 77, 0.3); }
+        .buy-now-big { background: var(--mpesa); color: white; border: none; width: 100%; padding: 18px; font-size: 1.1rem; font-weight: bold; border-radius: 10px; margin-top: 20px; cursor: pointer; }
 
         #mpesa-popup { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 6000; justify-content: center; align-items: center; padding: 20px; }
         .popup-box { background: white; width: 100%; max-width: 320px; padding: 25px; border-radius: 20px; text-align: center; }
@@ -61,9 +61,9 @@
     </div>
 
     <div class="cat-selection">
-        <div class="cat-box" onclick="goToPage('fashion-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600') center/cover;">FASHION</div>
-        <div class="cat-box" onclick="goToPage('beauty-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600') center/cover;">BEAUTY</div>
-        <div class="cat-box" onclick="goToPage('soap-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1600857062241-98e5dba7f214?w=600') center/cover;">ORGANIC SOAPS</div>
+        <div class="cat-box" onclick="goToPage('fashion-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('fashion/hero.jpg'), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600') center/cover;">FASHION</div>
+        <div class="cat-box" onclick="goToPage('beauty-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('beauty/hero.jpg'), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600') center/cover;">BEAUTY</div>
+        <div class="cat-box" onclick="goToPage('soap-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('soaps/turmeric-soap.jpg') center/cover;">ORGANIC SOAPS</div>
     </div>
 </div>
 
@@ -92,13 +92,7 @@
         <div class="detail-info">
             <h2 id="d-title" style="font-family:'Playfair Display'; margin-bottom:5px;"></h2>
             <span id="d-price" style="color:var(--gold); font-size:1.4rem; font-weight:bold;"></span>
-            <p style="font-size: 0.8rem; color: #555; margin: 15px 0; line-height:1.5;">Premium organic ingredients, hand-selected for the Pretty Pearl collection to give you that perfect glow.</p>
-            
-            <label style="font-size:0.7rem; font-weight:bold; letter-spacing:1px;">SELECT TYPE:</label>
-            <select id="d-variant" style="width:100%; padding:12px; border-radius:8px; margin-top:5px; border: 1px solid #ddd; font-family:'Poppins';">
-                <option>Standard Pack</option><option>Premium Bundle</option>
-            </select>
-
+            <p style="font-size: 0.8rem; color: #555; margin: 15px 0; line-height:1.5;">Premium quality selected specifically for the Pretty Pearl boutique. Hand-picked organic ingredients for a natural glow.</p>
             <button class="buy-now-big" onclick="triggerMpesa()">LIPA NA M-PESA</button>
         </div>
     </div>
@@ -106,11 +100,11 @@
 
 <div id="mpesa-popup">
     <div class="popup-box">
-        <h3 id="m-name" style="font-size: 1rem; margin-bottom:5px;"></h3>
-        <h2 id="m-price" style="color:var(--mpesa); margin: 0 0 20px 0;"></h2>
-        <input type="number" id="m-phone" placeholder="Enter M-Pesa Number" style="width:100%; padding:15px; text-align:center; border:2px solid #eee; border-radius:10px; font-size:1rem; outline:none;">
-        <button class="buy-now-big" onclick="confirmPayment()" style="margin-top:20px; padding:12px;">CONFIRM ORDER</button>
-        <p onclick="closeModal()" style="color:red; margin-top:20px; font-size:0.8rem; cursor:pointer; font-weight:600;">Cancel</p>
+        <h3 id="m-name" style="font-size: 0.9rem;"></h3>
+        <h2 id="m-price" style="color:var(--mpesa); margin: 5px 0 20px;"></h2>
+        <input type="number" id="m-phone" placeholder="M-Pesa Number" style="width:100%; padding:15px; text-align:center; border:2px solid #eee; border-radius:10px; font-size:1rem; outline:none;">
+        <button class="buy-now-big" onclick="confirmPayment()" style="margin-top:20px;">CONFIRM ORDER</button>
+        <p onclick="closeModal()" style="color:red; margin-top:20px; font-size:0.8rem; cursor:pointer;">Cancel</p>
     </div>
 </div>
 
@@ -134,46 +128,55 @@
         goToPage('detail-page');
     }
 
-    // --- 1. YOUR SOAP COLLECTION ---
+    // --- 1. SOAPS (Points to soaps/ folder) ---
     const soapGrid = document.getElementById('soap-list');
     const mySoaps = [
-        { name: "Rice Soap Moisturizer", price: 450, img: "rice-soap.jpg" },
-        { name: "Kojic Acid Retinol Soap", price: 600, img: "kojie soap.jpeg" },
-        { name: "Dr. Rashel Vitamin C", price: 550, img: "vit-c-soap.jpeg" },
-        { name: "Collagen Snail Soap", price: 500, img: "snail-soap.jpeg" },
-        { name: "Dove Relaxing Coconut", price: 350, img: "dove soap.jpeg" },
-        { name: "Organic Turmeric Soap", price: 450, img: "turmeric soap.jpeg" },
-        { name: "Goat milk soap", price: 500, img: "goatmilk soap.jpeg" },
-        { name: "Gluta-C Intense Whitening", price: 650, img: "gluta-csoap.jpeg" },
-	    { name: "Asantee soap", price: 650, img: "asantee soap.jpeg" }
+        { name: "Rice Soap Moisturizer", price: 450, img: "soaps/rice-soap.jpg" },
+        { name: "Kojic Acid Retinol Soap", price: 600, img: "soaps/kojic-soap.jpg" },
+        { name: "Dr. Rashel Vitamin C", price: 550, img: "soaps/vit-c-soap.jpg" },
+        { name: "Collagen Snail Soap", price: 500, img: "soaps/snail-soap.jpg" },
+        { name: "Dove Relaxing Coconut", price: 350, img: "soaps/dove-soap.jpg" },
+        { name: "Organic Turmeric Soap", price: 450, img: "soaps/turmeric-soap.jpg" },
+        { name: "Licorice Root Cleanser", price: 500, img: "soaps/licorice-soap.jpg" },
+        { name: "Gluta-C Intense Whitening", price: 650, img: "soaps/gluta-c.jpg" }
     ];
-
     mySoaps.forEach(p => {
-        soapGrid.innerHTML += `
-            <div class="product-card" onclick="openDetail('${p.name}', ${p.price}, '${p.img}', 'soap')">
-                <img src="${p.img}">
-                <h3>${p.name}</h3>
-                <span>KSh ${p.price.toLocaleString()}</span>
-            </div>`;
+        soapGrid.innerHTML += `<div class="product-card" onclick="openDetail('${p.name}', ${p.price}, '${p.img}', 'soap')">
+            <img src="${p.img}" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+            <h3>${p.name}</h3>
+            <span>KSh ${p.price.toLocaleString()}</span>
+        </div>`;
     });
 
-    // --- 2. FASHION & BEAUTY PLACEHOLDERS ---
-    function buildPlaceholder(id, type, price, img) {
-        const g = document.getElementById(id);
-        for(let i=1; i<=4; i++) {
-            g.innerHTML += `
-                <div class="product-card" onclick="openDetail('${type} Luxe ${i}', ${price}, '${img}', '${type.toLowerCase()}')">
-                    <img src="${img}">
-                    <h3>${type} Item ${i}</h3>
-                    <span>KSh ${price.toLocaleString()}</span>
-                </div>`;
-        }
-    }
-    buildPlaceholder('fashion-list', 'Fashion', 2500, 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400');
-    buildPlaceholder('beauty-list', 'Beauty', 1200, 'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400');
+    // --- 2. FASHION (Points to fashion/ folder) ---
+    const fashionGrid = document.getElementById('fashion-list');
+    const myFashion = [
+        { name: "Silk Wrap Dress", price: 3500, img: "fashion/curl dress black.jpg" },
+        { name: "Luxe Handbag", price: 4200, img: "fashion/curl dress grey.jpg" }
+    ];
+    myFashion.forEach(p => {
+        fashionGrid.innerHTML += `<div class="product-card" onclick="openDetail('${p.name}', ${p.price}, '${p.img}', 'fashion')">
+            <img src="${p.img}" onerror="this.src='https://via.placeholder.com/150?text=Fashion'">
+            <h3>${p.name}</h3>
+            <span>KSh ${p.price.toLocaleString()}</span>
+        </div>`;
+    });
+
+    // --- 3. BEAUTY (Points to beauty/ folder) ---
+    const beautyGrid = document.getElementById('beauty-list');
+    const myBeauty = [
+        { name: "Glow Serum", price: 1800, img: "beauty/serum1.jpg" },
+        { name: "Organic Shea Butter", price: 1200, img: "beauty/shea.jpg" }
+    ];
+    myBeauty.forEach(p => {
+        beautyGrid.innerHTML += `<div class="product-card" onclick="openDetail('${p.name}', ${p.price}, '${p.img}', 'beauty')">
+            <img src="${p.img}" onerror="this.src='https://via.placeholder.com/150?text=Beauty'">
+            <h3>${p.name}</h3>
+            <span>KSh ${p.price.toLocaleString()}</span>
+        </div>`;
+    });
 
     function triggerMpesa() {
-        item.variant = document.getElementById('d-variant').value;
         document.getElementById('m-name').innerText = item.name;
         document.getElementById('m-price').innerText = "KSh " + item.price.toLocaleString();
         document.getElementById('mpesa-popup').style.display = 'flex';
@@ -183,9 +186,9 @@
 
     function confirmPayment() {
         let phone = document.getElementById('m-phone').value;
-        if(phone.length < 10) return alert("Please enter a valid M-Pesa number");
-        // Update the number below to her actual WhatsApp number
-        window.open(`https://wa.me/254XXXXXXXXX?text=New Order: ${item.name} (${item.variant}) - Total: KSh ${item.price} - Paid via M-Pesa: ${phone}`);
+        if(phone.length < 10) return alert("Enter M-Pesa Number");
+        // WhatsApp notification - Ensure number is in format 254...
+        window.open(`https://wa.me/254720289644?text=New Order: ${item.name} - KSh ${item.price} - M-Pesa: ${phone}`);
         closeModal();
     }
 </script>
