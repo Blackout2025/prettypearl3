@@ -10,49 +10,37 @@
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { margin: 0; background: var(--bg); color: #222; font-family: 'Poppins', sans-serif; overflow-x: hidden; width: 100%; }
 
-        /* Header & Navigation */
         header { background: white; padding: 10px 5%; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: bold; }
         .logo span { color: var(--gold); }
 
-        /* Floating WhatsApp */
         .wa-float { position: fixed; bottom: 20px; right: 20px; background: var(--wa); color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 5000; text-decoration: none; }
 
         .page { display: none; width: 100%; animation: fadeIn 0.3s ease-in; }
         .active-page { display: block !important; }
 
-        /* HERO - Adjusted for Mobile */
-        .hero { height: 40vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e12?w=800') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 20px; }
-        .hero h1 { font-family: 'Playfair Display'; font-size: 2.5rem; margin: 0; }
+        .hero { height: 35vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e12?w=800') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 20px; }
+        .hero h1 { font-family: 'Playfair Display'; font-size: 2.2rem; margin: 0; }
 
-        /* LOCATION - Mobile friendly */
-        .location-section { background: white; padding: 30px 5%; text-align: center; }
-        .location-card { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--bg); padding: 15px; border-radius: 15px; border: 1px solid var(--gold); text-decoration: none; color: inherit; font-size: 0.9rem; }
-
-        /* CATEGORIES - STACKED FOR MOBILE */
         .cat-selection { padding: 20px 5%; display: flex; flex-direction: column; gap: 15px; }
-        .cat-box { height: 180px; width: 100%; border-radius: 12px; overflow: hidden; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem; font-family: 'Playfair Display'; font-weight: bold; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
+        .cat-box { height: 160px; width: 100%; border-radius: 12px; overflow: hidden; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.6rem; font-family: 'Playfair Display'; font-weight: bold; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
 
-        /* PRODUCT GRID - 2 per row on Mobile */
+        .section-title { padding: 20px 15px 5px; font-family: 'Playfair Display'; font-size: 1.5rem; color: var(--rose); text-align: center; }
+
         .product-grid { padding: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .product-card { background: white; padding: 10px; border-radius: 10px; border: 1px solid #eee; text-align: center; }
-        .product-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
-        .product-card h3 { font-size: 0.85rem; margin: 8px 0 4px; }
+        .product-card { background: white; padding: 10px; border-radius: 10px; border: 1px solid #eee; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .product-card img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; }
+        .product-card h3 { font-size: 0.8rem; margin: 8px 0 4px; font-weight: 600; }
         .product-card span { font-weight: bold; color: var(--gold); font-size: 0.9rem; }
 
-        /* DETAIL PAGE - Vertical for Mobile */
         .detail-container { padding: 20px; background: white; }
-        .detail-img { width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; }
-        .detail-info h2 { font-family: 'Playfair Display'; font-size: 1.8rem; margin: 0; }
+        .detail-img { width: 100%; height: 350px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; }
         .buy-now-big { background: var(--mpesa); color: white; border: none; width: 100%; padding: 18px; font-size: 1.1rem; font-weight: bold; border-radius: 10px; margin-top: 20px; }
 
-        /* MPESA POPUP */
         #mpesa-popup { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 6000; justify-content: center; align-items: center; padding: 20px; }
-        .popup-box { background: white; width: 100%; max-width: 350px; padding: 25px; border-radius: 20px; text-align: center; }
+        .popup-box { background: white; width: 100%; max-width: 320px; padding: 25px; border-radius: 20px; text-align: center; }
 
-        footer { background: #1a1a1a; color: #999; padding: 40px 5%; text-align: center; font-size: 0.8rem; }
-        .social-link { color: var(--gold); text-decoration: none; margin: 0 10px; font-size: 1rem; }
-
+        footer { background: #1a1a1a; color: #999; padding: 30px 5%; text-align: center; font-size: 0.7rem; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
@@ -60,7 +48,7 @@
 
 <header>
     <div class="logo" onclick="goToPage('home-page')">PRETTY <span>PEARL</span></div>
-    <div onclick="goToPage('home-page')" style="font-size: 0.9rem; font-weight:600;">HOME</div>
+    <div onclick="goToPage('home-page')" style="font-size: 0.8rem; font-weight:600; border: 1px solid #eee; padding: 5px 10px; border-radius: 5px;">HOME</div>
 </header>
 
 <a href="https://wa.me/254XXXXXXXXX" class="wa-float" target="_blank">💬</a>
@@ -68,67 +56,58 @@
 <div id="home-page" class="page active-page">
     <div class="hero">
         <h1>PRETTY PEARL</h1>
-        <p style="font-size: 0.8rem; letter-spacing: 2px;">PURE ELEGANCE</p>
-    </div>
-
-    <div class="location-section">
-        <a href="https://goo.gl/maps/Nairobi" target="_blank" class="location-card">
-            <span>📍</span> <strong>Nairobi CBD, Standard St.</strong>
-        </a>
+        <p style="font-size: 0.7rem; letter-spacing: 2px;">LUXURY AT YOUR FINGERTIPS</p>
     </div>
 
     <div class="cat-selection">
         <div class="cat-box" onclick="goToPage('fashion-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600') center/cover;">FASHION</div>
-        <div class="cat-box" onclick="goToPage('beauty-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600') center/cover;">BEAUTY</div>
+        <div class="cat-box" onclick="goToPage('beauty-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1554462903-1447a1c3f2d8?w=600') center/cover;">BEAUTY & SOAPS</div>
     </div>
 </div>
 
 <div id="fashion-page" class="page">
     <div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
+    <div class="section-title">Fashion Collection</div>
     <div class="product-grid" id="fashion-list"></div>
 </div>
 
 <div id="beauty-page" class="page">
     <div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
+    <div class="section-title">Organic Soap Collection</div>
     <div class="product-grid" id="beauty-list"></div>
 </div>
 
 <div id="detail-page" class="page">
-    <div style="padding:15px;"><button id="back-btn" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK TO LIST</button></div>
+    <div style="padding:15px;"><button id="back-btn" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
     <div class="detail-container">
         <img id="d-img" class="detail-img" src="">
         <div class="detail-info">
-            <h2 id="d-title"></h2>
-            <span id="d-price" style="color:var(--gold); font-size:1.5rem; font-weight:bold;"></span>
-            <p style="font-size: 0.9rem; color: #666;">High-quality premium selection. Limited stock available.</p>
+            <h2 id="d-title" style="font-family:'Playfair Display';"></h2>
+            <span id="d-price" style="color:var(--gold); font-size:1.4rem; font-weight:bold;"></span>
+            <p style="font-size: 0.85rem; color: #555; margin: 15px 0;">Premium quality and organic ingredients for the perfect glow. Hand-selected for the Pretty Pearl collection.</p>
             
-            <label style="font-size:0.8rem; font-weight:bold;">COLOR:</label>
-            <select id="d-color" style="width:100%; padding:12px; border-radius:8px; margin-top:5px;">
-                <option>Pearl White</option><option>Rose Gold</option><option>Diamond Black</option>
+            <label style="font-size:0.7rem; font-weight:bold; letter-spacing:1px;">VARIANT / COLOR:</label>
+            <select id="d-color" style="width:100%; padding:12px; border-radius:8px; margin-top:5px; border: 1px solid #ddd;">
+                <option>Original Glow</option><option>Rose Scented</option><option>Charcoal Pure</option>
             </select>
 
-            <button class="buy-now-big" onclick="triggerMpesa()">BUY WITH M-PESA</button>
+            <button class="buy-now-big" onclick="triggerMpesa()">LIPA NA M-PESA</button>
         </div>
     </div>
 </div>
 
 <div id="mpesa-popup">
     <div class="popup-box">
-        <h3 id="m-name"></h3>
-        <h2 id="m-price" style="color:var(--mpesa);"></h2>
-        <input type="number" id="m-phone" placeholder="07XX XXX XXX" style="width:100%; padding:15px; text-align:center; border:2px solid #ddd; border-radius:10px; font-size:1.1rem;">
-        <button class="buy-now-big" onclick="confirmPayment()">CONFIRM ORDER</button>
-        <p onclick="closeModal()" style="color:red; margin-top:15px; font-size:0.9rem;">Cancel</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/M-PESA_LOGO-01.svg" width="80">
+        <h3 id="m-name" style="margin-top:10px; font-size: 1rem;"></h3>
+        <h2 id="m-price" style="color:var(--mpesa); margin: 10px 0;"></h2>
+        <input type="number" id="m-phone" placeholder="M-Pesa Number" style="width:100%; padding:15px; text-align:center; border:2px solid #eee; border-radius:10px; font-size:1rem;">
+        <button class="buy-now-big" onclick="confirmPayment()" style="margin-top:15px; padding:12px;">CONFIRM</button>
+        <p onclick="closeModal()" style="color:red; margin-top:15px; font-size:0.8rem; cursor:pointer;">Cancel</p>
     </div>
 </div>
 
-<footer>
-    <div class="socials" style="margin-bottom:20px;">
-        <a href="#" class="social-link">Instagram</a>
-        <a href="#" class="social-link">TikTok</a>
-    </div>
-    <p>© 2026 Pretty Pearl Boutique</p>
-</footer>
+<footer><p>© 2026 Pretty Pearl Boutique</p></footer>
 
 <script>
     let item = {};
@@ -148,18 +127,31 @@
         goToPage('detail-page');
     }
 
-    function build(id, type, img) {
+    function build(id, type, imgPrefix) {
         const g = document.getElementById(id);
-        for(let i=1; i<=20; i++) {
-            let n = type + " Luxe " + i; let p = 2500 + (i*50);
-            g.innerHTML += `<div class="product-card" onclick="openDetail('${n}', ${p}, '${img}', '${type.toLowerCase()}')">
-                <img src="${img}"><h3>${n}</h3><span>KSh ${p.toLocaleString()}</span>
+        for(let i=1; i<=10; i++) {
+            let n = type + " Item " + i; 
+            if(type === 'Soap') n = "Organic Soap #" + i;
+            let p = (type === 'Soap') ? (450 + (i*20)) : (2500 + (i*100));
+            
+            // This line uses the image prefix + number (e.g., soap1.jpg)
+            let currentImg = (type === 'Soap') ? `soap${i}.jpg` : `item${i}.jpg`;
+            
+            // FOR DEMO: If you don't have all 10 images yet, it uses the placeholder
+            let finalImg = imgPrefix; 
+
+            g.innerHTML += `<div class="product-card" onclick="openDetail('${n}', ${p}, '${finalImg}', '${type.toLowerCase()}')">
+                <img src="${finalImg}">
+                <h3>${n}</h3>
+                <span>KSh ${p.toLocaleString()}</span>
             </div>`;
         }
     }
 
     build('fashion-list', 'Fashion', 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400');
-    build('beauty-list', 'Beauty', 'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400');
+    
+    // BEAUTY/SOAP SECTION
+    build('beauty-list', 'Soap', 'https://images.unsplash.com/photo-1600857062241-98e5dba7f214?w=400');
 
     function triggerMpesa() {
         item.color = document.getElementById('d-color').value;
@@ -173,7 +165,7 @@
     function confirmPayment() {
         let phone = document.getElementById('m-phone').value;
         if(phone.length < 10) return alert("Enter M-Pesa Number");
-        window.open(`https://wa.me/254XXXXXXXXX?text=Order: ${item.name} (${item.color}) - KSh ${item.price} - Phone: ${phone}`);
+        window.open(`https://wa.me/254XXXXXXXXX?text=New Order: ${item.name} (${item.color}) - KSh ${item.price} - M-Pesa: ${phone}`);
         closeModal();
     }
 </script>
