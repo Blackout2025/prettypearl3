@@ -34,14 +34,21 @@
         .page { display: none; width: 100%; animation: fadeIn 0.4s ease-in-out; }
         .active-page { display: block !important; }
 
-        .hero { height: 22vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e12?w=800') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; }
-        .hero h1 { font-family: 'Playfair Display'; font-size: 1.8rem; margin: 0; letter-spacing: 2px; }
+        /* UPDATED LUXE HERO SECTION */
+        .hero { 
+            height: 38vh; 
+            background: linear-gradient(135deg, #2c2c2c 0%, #111 100%); 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            color: white; text-align: center; 
+        }
+        .hero-logo { width: 75%; max-width: 250px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.1)); }
+        .hero p { font-size: 0.6rem; letter-spacing: 5px; text-transform: uppercase; margin-top: 15px; opacity: 0.8; }
 
-        .location-bar { background: #fff; border: 1px solid #eee; margin: 15px 5% 0; padding: 12px; border-radius: 12px; display: flex; align-items: center; gap: 10px; }
+        .location-bar { background: #fff; border: 1px solid #eee; margin: -20px 5% 0; padding: 12px; border-radius: 12px; display: flex; align-items: center; gap: 10px; position: relative; z-index: 10; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .loc-text h4 { margin: 0; font-size: 0.8rem; color: var(--rose); }
         .loc-text p { margin: 0; font-size: 0.7rem; color: #777; }
 
-        .consult-tile { background: linear-gradient(45deg, #5a3e3e, #d4af37); height: 60px; margin: 15px 5%; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Playfair Display'; font-style: italic; font-size: 1rem; cursor: pointer; border: 1px solid white; box-shadow: 0 4px 10px rgba(212,175,55,0.2); }
+        .consult-tile { background: linear-gradient(45deg, #5a3e3e, #d4af37); height: 60px; margin: 25px 5% 15px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Playfair Display'; font-style: italic; font-size: 1rem; cursor: pointer; border: 1px solid white; box-shadow: 0 4px 10px rgba(212,175,55,0.2); }
 
         .cat-selection { padding: 10px 5% 30px; display: flex; flex-direction: column; gap: 15px; }
         .cat-box { 
@@ -78,15 +85,18 @@
 </head>
 <body onload="checkPopup()">
 
+<audio id="welcomeSound" src="https://assets.mixkit.co/active_storage/sfx/2013/2013-preview.mp3" preload="auto"></audio>
+
 <div id="welcome-popup" class="overlay">
     <div class="popup-box">
+        <img src="logo.png" style="width: 100px; margin-bottom: 10px;" onerror="this.style.display='none'">
         <h2 style="font-style: italic; margin-bottom: 0;">Welcome | Karibu</h2>
         <h1 style="font-family:'Playfair Display'; font-size: 1.8rem; margin: 10px 0;">PRETTY PEARL</h1>
         <p style="color:#666; font-size: 0.85rem; line-height: 1.6;">
             Discover luxury fashion and skincare in Homa Bay.<br>
-            <b>Pata uremo na mavazi ya kisasa hapa Homa Bay.</b>
+            <b>Pata uremo na mavazi ya kisasa hapa.</b>
         </p>
-        <button class="buy-now-big" style="background:var(--rose);" onclick="closePopup('welcome-popup')">EXPLORE NOW</button>
+        <button class="buy-now-big" style="background:var(--rose);" onclick="enterShop()">EXPLORE NOW</button>
     </div>
 </div>
 
@@ -109,7 +119,10 @@
 <a id="main-wa-link" href="#" class="wa-float" target="_blank">💬</a>
 
 <div id="home-page" class="page active-page">
-    <div class="hero"><h1>PRETTY PEARL</h1><p style="font-size: 0.6rem; letter-spacing: 3px;">LUXURY BOUTIQUE</p></div>
+    <div class="hero">
+        <img src="logo.png" class="hero-logo" alt="Pretty Pearl" onerror="this.style.display='none'">
+        <p>LUXURY BOUTIQUE</p>
+    </div>
     <div class="location-bar"><span>📍</span><div class="loc-text"><h4>Homa Bay Town</h4><p>Next to the Postal Office</p></div></div>
     <div class="consult-tile" onclick="goToPage('consult-page')">✨ Free Skin Consultation ✨</div>
     <div class="cat-selection">
@@ -158,7 +171,6 @@
 <footer><p><b>PRETTY PEARL LUXE BOUTIQUE</b><br>Homa Bay Town - Next to the Postal Office<br>© 2026 Pretty Pearl</p></footer>
 
 <script>
-    // Updated to match the numbers from your logo
     const MY_PHONE = "254720289644"; 
     let currentItem = {};
     document.getElementById('main-wa-link').href = `https://wa.me/${MY_PHONE}`;
@@ -177,6 +189,13 @@
 
     function checkPopup() { document.getElementById('welcome-popup').style.display = 'flex'; }
     function closePopup(id) { document.getElementById(id).style.display = 'none'; }
+
+    // Combined close and play sound for the entry
+    function enterShop() {
+        const sound = document.getElementById('welcomeSound');
+        sound.play().catch(e => console.log("Sound enabled after interaction"));
+        closePopup('welcome-popup');
+    }
 
     function goToPage(id) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
