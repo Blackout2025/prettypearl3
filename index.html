@@ -19,17 +19,18 @@
         .page { display: none; width: 100%; animation: fadeIn 0.3s ease-in; }
         .active-page { display: block !important; }
 
-        .hero { height: 35vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e12?w=800') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 20px; }
-        .hero h1 { font-family: 'Playfair Display'; font-size: 2.2rem; margin: 0; }
+        .hero { height: 30vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e12?w=800') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 20px; }
+        .hero h1 { font-family: 'Playfair Display'; font-size: 2rem; margin: 0; }
 
-        .cat-selection { padding: 20px 5%; display: flex; flex-direction: column; gap: 15px; }
-        .cat-box { height: 160px; width: 100%; border-radius: 12px; overflow: hidden; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.6rem; font-family: 'Playfair Display'; font-weight: bold; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
+        /* TILE SYSTEM */
+        .cat-selection { padding: 20px 5%; display: flex; flex-direction: column; gap: 12px; }
+        .cat-box { height: 140px; width: 100%; border-radius: 12px; overflow: hidden; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.6rem; font-family: 'Playfair Display'; font-weight: bold; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
 
         .section-title { padding: 20px 15px 5px; font-family: 'Playfair Display'; font-size: 1.5rem; color: var(--rose); text-align: center; }
 
         .product-grid { padding: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .product-card { background: white; padding: 10px; border-radius: 10px; border: 1px solid #eee; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-        .product-card img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; }
+        .product-card { background: white; padding: 10px; border-radius: 10px; border: 1px solid #eee; text-align: center; }
+        .product-card img { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; }
         .product-card h3 { font-size: 0.8rem; margin: 8px 0 4px; font-weight: 600; }
         .product-card span { font-weight: bold; color: var(--gold); font-size: 0.9rem; }
 
@@ -56,12 +57,15 @@
 <div id="home-page" class="page active-page">
     <div class="hero">
         <h1>PRETTY PEARL</h1>
-        <p style="font-size: 0.7rem; letter-spacing: 2px;">LUXURY AT YOUR FINGERTIPS</p>
+        <p style="font-size: 0.7rem; letter-spacing: 2px;">LUXURY BOUTIQUE</p>
     </div>
 
     <div class="cat-selection">
         <div class="cat-box" onclick="goToPage('fashion-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600') center/cover;">FASHION</div>
-        <div class="cat-box" onclick="goToPage('beauty-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1554462903-1447a1c3f2d8?w=600') center/cover;">BEAUTY & SOAPS</div>
+        
+        <div class="cat-box" onclick="goToPage('beauty-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600') center/cover;">BEAUTY</div>
+        
+        <div class="cat-box" onclick="goToPage('soap-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1600857062241-98e5dba7f214?w=600') center/cover;">ORGANIC SOAPS</div>
     </div>
 </div>
 
@@ -73,8 +77,14 @@
 
 <div id="beauty-page" class="page">
     <div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
-    <div class="section-title">Organic Soap Collection</div>
+    <div class="section-title">Beauty & Cosmetics</div>
     <div class="product-grid" id="beauty-list"></div>
+</div>
+
+<div id="soap-page" class="page">
+    <div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
+    <div class="section-title">Organic Soaps</div>
+    <div class="product-grid" id="soap-list"></div>
 </div>
 
 <div id="detail-page" class="page">
@@ -84,11 +94,11 @@
         <div class="detail-info">
             <h2 id="d-title" style="font-family:'Playfair Display';"></h2>
             <span id="d-price" style="color:var(--gold); font-size:1.4rem; font-weight:bold;"></span>
-            <p style="font-size: 0.85rem; color: #555; margin: 15px 0;">Premium quality and organic ingredients for the perfect glow. Hand-selected for the Pretty Pearl collection.</p>
+            <p style="font-size: 0.85rem; color: #555; margin: 15px 0;">Premium selection, hand-picked for the Pretty Pearl collection.</p>
             
-            <label style="font-size:0.7rem; font-weight:bold; letter-spacing:1px;">VARIANT / COLOR:</label>
+            <label style="font-size:0.7rem; font-weight:bold;">SELECT VARIANT:</label>
             <select id="d-color" style="width:100%; padding:12px; border-radius:8px; margin-top:5px; border: 1px solid #ddd;">
-                <option>Original Glow</option><option>Rose Scented</option><option>Charcoal Pure</option>
+                <option>Original</option><option>Premium Plus</option>
             </select>
 
             <button class="buy-now-big" onclick="triggerMpesa()">LIPA NA M-PESA</button>
@@ -98,12 +108,11 @@
 
 <div id="mpesa-popup">
     <div class="popup-box">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/M-PESA_LOGO-01.svg" width="80">
-        <h3 id="m-name" style="margin-top:10px; font-size: 1rem;"></h3>
+        <h3 id="m-name" style="font-size: 1rem;"></h3>
         <h2 id="m-price" style="color:var(--mpesa); margin: 10px 0;"></h2>
-        <input type="number" id="m-phone" placeholder="M-Pesa Number" style="width:100%; padding:15px; text-align:center; border:2px solid #eee; border-radius:10px; font-size:1rem;">
-        <button class="buy-now-big" onclick="confirmPayment()" style="margin-top:15px; padding:12px;">CONFIRM</button>
-        <p onclick="closeModal()" style="color:red; margin-top:15px; font-size:0.8rem; cursor:pointer;">Cancel</p>
+        <input type="number" id="m-phone" placeholder="Phone Number" style="width:100%; padding:15px; text-align:center; border:2px solid #eee; border-radius:10px; font-size:1.1rem;">
+        <button class="buy-now-big" onclick="confirmPayment()" style="margin-top:15px; padding:12px;">CONFIRM ORDER</button>
+        <p onclick="closeModal()" style="color:red; margin-top:15px; font-size:0.8rem;">Cancel</p>
     </div>
 </div>
 
@@ -127,31 +136,21 @@
         goToPage('detail-page');
     }
 
-    function build(id, type, imgPrefix) {
+    function build(id, type, priceBase, img) {
         const g = document.getElementById(id);
         for(let i=1; i<=10; i++) {
-            let n = type + " Item " + i; 
-            if(type === 'Soap') n = "Organic Soap #" + i;
-            let p = (type === 'Soap') ? (450 + (i*20)) : (2500 + (i*100));
-            
-            // This line uses the image prefix + number (e.g., soap1.jpg)
-            let currentImg = (type === 'Soap') ? `soap${i}.jpg` : `item${i}.jpg`;
-            
-            // FOR DEMO: If you don't have all 10 images yet, it uses the placeholder
-            let finalImg = imgPrefix; 
-
-            g.innerHTML += `<div class="product-card" onclick="openDetail('${n}', ${p}, '${finalImg}', '${type.toLowerCase()}')">
-                <img src="${finalImg}">
-                <h3>${n}</h3>
-                <span>KSh ${p.toLocaleString()}</span>
+            let n = type + " " + i;
+            let p = priceBase + (i * 50);
+            g.innerHTML += `<div class="product-card" onclick="openDetail('${n}', ${p}, '${img}', '${type.toLowerCase()}')">
+                <img src="${img}"><h3>${n}</h3><span>KSh ${p.toLocaleString()}</span>
             </div>`;
         }
     }
 
-    build('fashion-list', 'Fashion', 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400');
-    
-    // BEAUTY/SOAP SECTION
-    build('beauty-list', 'Soap', 'https://images.unsplash.com/photo-1600857062241-98e5dba7f214?w=400');
+    // Build the lists
+    build('fashion-list', 'Fashion', 2500, 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400');
+    build('beauty-list', 'Beauty', 1200, 'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400');
+    build('soap-list', 'Soap', 400, 'https://images.unsplash.com/photo-1600857062241-98e5dba7f214?w=400');
 
     function triggerMpesa() {
         item.color = document.getElementById('d-color').value;
@@ -164,8 +163,8 @@
 
     function confirmPayment() {
         let phone = document.getElementById('m-phone').value;
-        if(phone.length < 10) return alert("Enter M-Pesa Number");
-        window.open(`https://wa.me/254XXXXXXXXX?text=New Order: ${item.name} (${item.color}) - KSh ${item.price} - M-Pesa: ${phone}`);
+        if(phone.length < 10) return alert("Enter Phone Number");
+        window.open(`https://wa.me/254720289644?text=Order: ${item.name} - KSh ${item.price} - M-Pesa: ${phone}`);
         closeModal();
     }
 </script>
