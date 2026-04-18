@@ -2,150 +2,136 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pretty Pearl | Premium Boutique</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pretty Pearl | Luxe Boutique</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #d4af37; --rose: #5a3e3e; --bg: #fdfcf0; --mpesa: #49b04d; --wa: #25d366; }
-        * { box-sizing: border-box; scroll-behavior: smooth; font-family: 'Poppins', sans-serif; }
-        body { margin: 0; background: var(--bg); color: #222; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { margin: 0; background: var(--bg); color: #222; font-family: 'Poppins', sans-serif; overflow-x: hidden; width: 100%; }
 
-        /* Announcement & Header */
-        .top-bar { background: var(--rose); color: white; text-align: center; padding: 8px; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
-        header { background: white; padding: 15px 5%; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .logo { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: bold; cursor: pointer; }
+        /* Header & Navigation */
+        header { background: white; padding: 10px 5%; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: bold; }
         .logo span { color: var(--gold); }
 
-        /* Floating WhatsApp Button */
-        .wa-float { 
-            position: fixed; bottom: 20px; right: 20px; background: var(--wa); color: white; 
-            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; 
-            justify-content: center; font-size: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
-            z-index: 5000; text-decoration: none; transition: 0.3s;
-        }
-        .wa-float:hover { transform: scale(1.1); }
+        /* Floating WhatsApp */
+        .wa-float { position: fixed; bottom: 20px; right: 20px; background: var(--wa); color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 5000; text-decoration: none; }
 
-        .page { display: none; width: 100%; animation: fadeIn 0.4s; }
+        .page { display: none; width: 100%; animation: fadeIn 0.3s ease-in; }
         .active-page { display: block !important; }
 
-        /* Sections */
-        .hero { height: 50vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e12?w=1200') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; }
-        .location-section { background: white; padding: 40px 10%; text-align: center; }
-        .location-card { display: inline-flex; align-items: center; gap: 15px; background: var(--bg); padding: 15px 30px; border-radius: 50px; border: 1px solid var(--gold); text-decoration: none; color: inherit; }
+        /* HERO - Adjusted for Mobile */
+        .hero { height: 40vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e12?w=800') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 20px; }
+        .hero h1 { font-family: 'Playfair Display'; font-size: 2.5rem; margin: 0; }
 
-        .cat-selection { padding: 40px 5%; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .cat-box { height: 300px; width: 45%; min-width: 280px; border-radius: 15px; overflow: hidden; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-family: 'Playfair Display'; font-weight: bold; text-shadow: 2px 2px 10px rgba(0,0,0,0.7); }
+        /* LOCATION - Mobile friendly */
+        .location-section { background: white; padding: 30px 5%; text-align: center; }
+        .location-card { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--bg); padding: 15px; border-radius: 15px; border: 1px solid var(--gold); text-decoration: none; color: inherit; font-size: 0.9rem; }
 
-        /* Shop Grid */
-        .product-grid { padding: 20px 5% 60px; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
-        .product-card { background: white; padding: 15px; border-radius: 12px; cursor: pointer; text-align: center; border: 1px solid #eee; transition: 0.3s; }
-        .product-card:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .product-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
+        /* CATEGORIES - STACKED FOR MOBILE */
+        .cat-selection { padding: 20px 5%; display: flex; flex-direction: column; gap: 15px; }
+        .cat-box { height: 180px; width: 100%; border-radius: 12px; overflow: hidden; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem; font-family: 'Playfair Display'; font-weight: bold; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
 
-        /* Detail Page */
-        .detail-container { padding: 40px 10%; display: flex; gap: 50px; flex-wrap: wrap; background: white; min-height: 80vh; }
-        .detail-img { width: 450px; max-width: 100%; height: 550px; object-fit: cover; border-radius: 15px; }
-        .detail-info { flex: 1; min-width: 300px; }
-        .buy-now-big { background: var(--mpesa); color: white; border: none; width: 100%; padding: 20px; font-size: 1.2rem; font-weight: bold; cursor: pointer; border-radius: 12px; }
+        /* PRODUCT GRID - 2 per row on Mobile */
+        .product-grid { padding: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .product-card { background: white; padding: 10px; border-radius: 10px; border: 1px solid #eee; text-align: center; }
+        .product-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
+        .product-card h3 { font-size: 0.85rem; margin: 8px 0 4px; }
+        .product-card span { font-weight: bold; color: var(--gold); font-size: 0.9rem; }
 
-        /* Popup */
-        #mpesa-popup { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index: 6000; justify-content: center; align-items: center; }
-        .popup-box { background: white; width: 350px; padding: 35px; border-radius: 20px; text-align: center; }
+        /* DETAIL PAGE - Vertical for Mobile */
+        .detail-container { padding: 20px; background: white; }
+        .detail-img { width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; }
+        .detail-info h2 { font-family: 'Playfair Display'; font-size: 1.8rem; margin: 0; }
+        .buy-now-big { background: var(--mpesa); color: white; border: none; width: 100%; padding: 18px; font-size: 1.1rem; font-weight: bold; border-radius: 10px; margin-top: 20px; }
 
-        footer { background: #1a1a1a; color: #fff; padding: 60px 5%; text-align: center; }
-        .social-link { color: var(--gold); text-decoration: none; margin: 0 10px; font-weight: 600; }
+        /* MPESA POPUP */
+        #mpesa-popup { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 6000; justify-content: center; align-items: center; padding: 20px; }
+        .popup-box { background: white; width: 100%; max-width: 350px; padding: 25px; border-radius: 20px; text-align: center; }
+
+        footer { background: #1a1a1a; color: #999; padding: 40px 5%; text-align: center; font-size: 0.8rem; }
+        .social-link { color: var(--gold); text-decoration: none; margin: 0 10px; font-size: 1rem; }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
-<div class="top-bar">✨ Special Offer: Premium Collections Now Available ✨</div>
-
 <header>
     <div class="logo" onclick="goToPage('home-page')">PRETTY <span>PEARL</span></div>
-    <div onclick="goToPage('home-page')" style="cursor:pointer; font-weight:600;">HOME</div>
+    <div onclick="goToPage('home-page')" style="font-size: 0.9rem; font-weight:600;">HOME</div>
 </header>
 
-<a href="https://wa.me/254XXXXXXXXX" class="wa-float" target="_blank" title="Chat with us">
-    💬
-</a>
+<a href="https://wa.me/254XXXXXXXXX" class="wa-float" target="_blank">💬</a>
 
 <div id="home-page" class="page active-page">
     <div class="hero">
-        <h1 style="font-family:'Playfair Display'; font-size:3.5rem;">PRETTY PEARL</h1>
-        <p>Your Daily Dose of Elegance</p>
+        <h1>PRETTY PEARL</h1>
+        <p style="font-size: 0.8rem; letter-spacing: 2px;">PURE ELEGANCE</p>
     </div>
 
     <div class="location-section">
         <a href="https://goo.gl/maps/Nairobi" target="_blank" class="location-card">
-            <span>📍</span>
-            <div style="text-align: left;">
-                <strong>Nairobi CBD, Kenya</strong><br>
-                <small>Standard Street | Open 9am - 6pm</small>
-            </div>
+            <span>📍</span> <strong>Nairobi CBD, Standard St.</strong>
         </a>
     </div>
 
     <div class="cat-selection">
-        <div class="cat-box" onclick="goToPage('fashion-page')" style="background: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600') center/cover;">FASHION</div>
-        <div class="cat-box" onclick="goToPage('beauty-page')" style="background: url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600') center/cover;">BEAUTY</div>
+        <div class="cat-box" onclick="goToPage('fashion-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600') center/cover;">FASHION</div>
+        <div class="cat-box" onclick="goToPage('beauty-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600') center/cover;">BEAUTY</div>
     </div>
 </div>
 
 <div id="fashion-page" class="page">
-    <div style="padding:20px 5%;"><button onclick="goToPage('home-page')" style="border:none; background:none; cursor:pointer; font-weight:bold; color:var(--gold);">← BACK</button></div>
+    <div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
     <div class="product-grid" id="fashion-list"></div>
 </div>
 
 <div id="beauty-page" class="page">
-    <div style="padding:20px 5%;"><button onclick="goToPage('home-page')" style="border:none; background:none; cursor:pointer; font-weight:bold; color:var(--gold);">← BACK</button></div>
+    <div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
     <div class="product-grid" id="beauty-list"></div>
 </div>
 
 <div id="detail-page" class="page">
-    <div style="padding:20px 5%;"><button id="back-to-stock" style="border:none; background:none; cursor:pointer; font-weight:bold; color:var(--gold);">← BACK TO LIST</button></div>
+    <div style="padding:15px;"><button id="back-btn" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK TO LIST</button></div>
     <div class="detail-container">
         <img id="d-img" class="detail-img" src="">
         <div class="detail-info">
-            <h2 id="d-title" style="font-family:'Playfair Display'; font-size: 2.5rem;"></h2>
-            <span id="d-price" style="font-size: 2rem; color: var(--gold); font-weight: bold; display: block; margin-bottom: 20px;"></span>
-            <p style="line-height: 1.6; color: #555; margin-bottom: 30px;">This exclusive piece from the Pretty Pearl collection is designed for the modern woman who values style and comfort.</p>
+            <h2 id="d-title"></h2>
+            <span id="d-price" style="color:var(--gold); font-size:1.5rem; font-weight:bold;"></span>
+            <p style="font-size: 0.9rem; color: #666;">High-quality premium selection. Limited stock available.</p>
             
-            <label style="font-weight:bold;">Select Color:</label>
-            <select id="d-color" style="width:100%; padding:15px; margin: 10px 0 30px; border-radius:10px;">
-                <option>Original Pearl</option><option>Rose Gold</option><option>Diamond Black</option>
+            <label style="font-size:0.8rem; font-weight:bold;">COLOR:</label>
+            <select id="d-color" style="width:100%; padding:12px; border-radius:8px; margin-top:5px;">
+                <option>Pearl White</option><option>Rose Gold</option><option>Diamond Black</option>
             </select>
 
-            <button class="buy-now-big" onclick="triggerMpesa()">LIPA NA M-PESA</button>
+            <button class="buy-now-big" onclick="triggerMpesa()">BUY WITH M-PESA</button>
         </div>
     </div>
 </div>
 
 <div id="mpesa-popup">
     <div class="popup-box">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/M-PESA_LOGO-01.svg" width="100" style="margin-bottom:20px;">
         <h3 id="m-name"></h3>
-        <p id="m-color"></p>
-        <h2 id="m-price"></h2>
-        <input type="number" id="m-phone" placeholder="M-Pesa Number" style="width:100%; padding:15px; text-align:center; border:2px solid var(--mpesa); border-radius:10px;">
-        <button class="buy-now-big" onclick="confirmPayment()" style="margin-top:20px; padding:12px;">SEND PAYMENT</button>
-        <p onclick="closeModal()" style="color:red; cursor:pointer; margin-top:15px;">Cancel</p>
+        <h2 id="m-price" style="color:var(--mpesa);"></h2>
+        <input type="number" id="m-phone" placeholder="07XX XXX XXX" style="width:100%; padding:15px; text-align:center; border:2px solid #ddd; border-radius:10px; font-size:1.1rem;">
+        <button class="buy-now-big" onclick="confirmPayment()">CONFIRM ORDER</button>
+        <p onclick="closeModal()" style="color:red; margin-top:15px; font-size:0.9rem;">Cancel</p>
     </div>
 </div>
 
 <footer>
-    <div class="logo" style="margin-bottom:20px;">PRETTY <span>PEARL</span></div>
-    <div style="margin-bottom: 20px;">
-        <a href="https://m.me/YourMomsFB" target="_blank" class="social-link">Messenger</a>
-        <a href="https://instagram.com/YourMomsIG" target="_blank" class="social-link">Instagram</a>
-        <a href="https://tiktok.com/@YourMomsTT" target="_blank" class="social-link">TikTok</a>
+    <div class="socials" style="margin-bottom:20px;">
+        <a href="#" class="social-link">Instagram</a>
+        <a href="#" class="social-link">TikTok</a>
     </div>
-    <p style="font-size: 0.8rem; color: #666;">© 2026 Pretty Pearl Boutique. All rights reserved.</p>
+    <p>© 2026 Pretty Pearl Boutique</p>
 </footer>
 
 <script>
-    let currentItem = {};
+    let item = {};
 
     function goToPage(id) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
@@ -154,33 +140,31 @@
     }
 
     function openDetail(name, price, img, type) {
-        currentItem = { name, price, img, type };
+        item = { name, price, img, type };
         document.getElementById('d-title').innerText = name;
         document.getElementById('d-price').innerText = "KSh " + price.toLocaleString();
         document.getElementById('d-img').src = img;
-        document.getElementById('back-to-stock').onclick = () => goToPage(type + '-page');
+        document.getElementById('back-btn').onclick = () => goToPage(type + '-page');
         goToPage('detail-page');
     }
 
-    function buildList(gridId, type, img) {
-        const grid = document.getElementById(gridId);
-        for(let i=1; i<=25; i++) {
-            let name = type + " Luxe #" + i;
-            let price = 2800 + (i * 100);
-            grid.innerHTML += `<div class="product-card" onclick="openDetail('${name}', ${price}, '${img}', '${type.toLowerCase()}')">
-                <img src="${img}"><h3>${name}</h3><span style="font-weight:bold; color:var(--gold);">KSh ${price.toLocaleString()}</span>
+    function build(id, type, img) {
+        const g = document.getElementById(id);
+        for(let i=1; i<=20; i++) {
+            let n = type + " Luxe " + i; let p = 2500 + (i*50);
+            g.innerHTML += `<div class="product-card" onclick="openDetail('${n}', ${p}, '${img}', '${type.toLowerCase()}')">
+                <img src="${img}"><h3>${n}</h3><span>KSh ${p.toLocaleString()}</span>
             </div>`;
         }
     }
 
-    buildList('fashion-list', 'Fashion', 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400');
-    buildList('beauty-list', 'Beauty', 'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400');
+    build('fashion-list', 'Fashion', 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400');
+    build('beauty-list', 'Beauty', 'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400');
 
     function triggerMpesa() {
-        currentItem.color = document.getElementById('d-color').value;
-        document.getElementById('m-name').innerText = currentItem.name;
-        document.getElementById('m-color').innerText = "Color: " + currentItem.color;
-        document.getElementById('m-price').innerText = "KSh " + currentItem.price.toLocaleString();
+        item.color = document.getElementById('d-color').value;
+        document.getElementById('m-name').innerText = item.name;
+        document.getElementById('m-price').innerText = "KSh " + item.price.toLocaleString();
         document.getElementById('mpesa-popup').style.display = 'flex';
     }
 
@@ -189,9 +173,7 @@
     function confirmPayment() {
         let phone = document.getElementById('m-phone').value;
         if(phone.length < 10) return alert("Enter M-Pesa Number");
-        let momNum = "254XXXXXXXXX"; 
-        let msg = `*NEW ORDER* 💎\nItem: ${currentItem.name}\nColor: ${currentItem.color}\nPrice: KSh ${currentItem.price.toLocaleString()}\nPhone: ${phone}`;
-        window.open(`https://wa.me/${momNum}?text=${encodeURIComponent(msg)}`, '_blank');
+        window.open(`https://wa.me/254XXXXXXXXX?text=Order: ${item.name} (${item.color}) - KSh ${item.price} - Phone: ${phone}`);
         closeModal();
     }
 </script>
