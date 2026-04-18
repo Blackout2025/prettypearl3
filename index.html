@@ -3,129 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Pretty Pearl | Luxe Boutique</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Pretty Pearl | Luxe Boutique Homa Bay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #d4af37; --rose: #5a3e3e; --bg: #fdfcf0; --mpesa: #49b04d; --wa: #25d366; }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { margin: 0; background: var(--bg); color: #222; font-family: 'Poppins', sans-serif; overflow-x: hidden; width: 100%; }
+        body { margin: 0; background: var(--bg); color: #222; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
         header { background: white; padding: 10px 5%; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: bold; cursor: pointer; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: bold; cursor: pointer; }
         .logo span { color: var(--gold); }
 
-        .wa-float { position: fixed; bottom: 20px; right: 20px; background: var(--wa); color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 -5px 15px rgba(0,0,0,0.3); z-index: 5000; text-decoration: none; }
+        .wa-float { position: fixed; bottom: 20px; right: 20px; background: var(--wa); color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 5000; text-decoration: none; }
 
-        .page { display: none; width: 100%; animation: fadeIn 0.3s ease-in; }
+        .page { display: none; width: 100%; animation: fadeIn 0.4s ease-in-out; }
         .active-page { display: block !important; }
 
-        .hero { height: 25vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e12?w=800') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 20px; }
-        .hero h1 { font-family: 'Playfair Display'; font-size: 1.8rem; margin: 0; }
+        .hero { height: 22vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e12?auto=format&fit=crop&w=800') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; }
+        .hero h1 { font-family: 'Playfair Display'; font-size: 1.8rem; margin: 0; letter-spacing: 2px; }
 
-        .cat-selection { padding: 20px 5%; display: flex; flex-direction: column; gap: 12px; }
-        .cat-box { height: 130px; width: 100%; border-radius: 12px; overflow: hidden; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.4rem; font-family: 'Playfair Display'; font-weight: bold; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); transition: 0.3s; }
-        .cat-box:active { transform: scale(0.98); }
+        .location-bar { background: #fff; border: 1px solid #eee; margin: 15px 5% 0; padding: 12px; border-radius: 12px; display: flex; align-items: center; gap: 10px; }
+        .loc-text h4 { margin: 0; font-size: 0.8rem; color: var(--rose); }
+        .loc-text p { margin: 0; font-size: 0.7rem; color: #777; }
 
-        .section-title { padding: 20px 15px 5px; font-family: 'Playfair Display'; font-size: 1.5rem; color: var(--rose); text-align: center; }
+        .consult-tile { background: linear-gradient(45deg, #5a3e3e, #d4af37); height: 60px; margin: 15px 5%; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Playfair Display'; font-style: italic; font-size: 1rem; cursor: pointer; border: 1px solid white; }
 
-        .product-grid { padding: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .product-card { background: white; padding: 10px; border-radius: 10px; border: 1px solid #eee; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-        .product-card img { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; }
-        .product-card h3 { font-size: 0.75rem; margin: 8px 0 4px; font-weight: 600; color: #333; }
-        .product-card span { font-weight: bold; color: var(--gold); font-size: 0.85rem; }
+        .cat-selection { padding: 10px 5% 30px; display: flex; flex-direction: column; gap: 15px; }
+        .cat-box { 
+            height: 130px; width: 100%; border-radius: 15px; overflow: hidden; 
+            cursor: pointer; display: flex; align-items: center; justify-content: center; 
+            color: white; font-size: 1.6rem; font-family: 'Playfair Display', serif; 
+            font-weight: 700; font-style: italic; letter-spacing: 3px; text-transform: uppercase;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8); transition: 0.4s;
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        .cat-box:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(212,175,55,0.3); border-color: var(--gold); }
 
-        .detail-container { padding: 20px; background: white; min-height: 80vh; }
-        .detail-img { width: 100%; height: 350px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; }
-        .buy-now-big { background: var(--mpesa); color: white; border: none; width: 100%; padding: 18px; font-size: 1.1rem; font-weight: bold; border-radius: 10px; margin-top: 20px; cursor: pointer; }
+        /* --- FEEDBACK SECTION STYLE --- */
+        .feedback-section { background: white; margin: 20px 5%; padding: 25px; border-radius: 15px; border: 1px solid #eee; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .feedback-section h3 { font-family: 'Playfair Display'; color: var(--rose); margin-bottom: 10px; font-size: 1.3rem; }
+        .feedback-section p { font-size: 0.8rem; color: #666; margin-bottom: 15px; }
+        .feedback-input { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #ddd; font-family: 'Poppins'; margin-bottom: 10px; font-size: 0.9rem; }
+        .feedback-btn { width: 100%; background: #222; color: white; border: none; padding: 15px; border-radius: 10px; font-weight: 600; cursor: pointer; }
 
-        #mpesa-popup { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 6000; justify-content: center; align-items: center; padding: 20px; }
-        .popup-box { background: white; width: 100%; max-width: 320px; padding: 25px; border-radius: 20px; text-align: center; }
+        .section-title { padding: 20px 15px 10px; font-family: 'Playfair Display'; font-size: 1.6rem; color: var(--rose); text-align: center; letter-spacing: 2px; text-transform: uppercase; }
 
-        footer { background: #1a1a1a; color: #666; padding: 30px 5%; text-align: center; font-size: 0.7rem; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .product-grid { padding: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .product-card { background: white; padding: 10px; border-radius: 12px; border: 1px solid #eee; text-align: center; }
+        .product-card img { width: 100%; height: 140px; object-fit: cover; border-radius: 10px; }
+        .product-card h3 { font-size: 0.8rem; margin: 8px 0 4px; color: #333; }
+        .product-card span { font-weight: bold; color: var(--gold); font-size: 0.9rem; }
+
+        .detail-container { padding: 20px; background: white; min-height: 85vh; }
+        .detail-img { width: 100%; height: 350px; object-fit: cover; border-radius: 15px; margin-bottom: 20px; }
+        .buy-now-big { background: var(--mpesa); color: white; border: none; width: 100%; padding: 18px; font-size: 1.1rem; font-weight: bold; border-radius: 12px; cursor: pointer; margin-top: 20px; }
+
+        #mpesa-popup { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 6000; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(5px); }
+        .popup-box { background: white; width: 100%; max-width: 340px; padding: 30px; border-radius: 20px; text-align: center; }
+        
+        footer { background: #111; color: #888; padding: 30px 5%; text-align: center; font-size: 0.7rem; line-height: 1.6; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo" onclick="goToPage('home-page')">PRETTY <span>PEARL</span></div>
-    <div onclick="goToPage('home-page')" style="font-size: 0.7rem; font-weight:600; border: 1px solid #ddd; padding: 5px 12px; border-radius: 20px;">HOME</div>
+    <div onclick="goToPage('home-page')" style="font-size: 0.65rem; font-weight:600; border: 1px solid #ddd; padding: 5px 12px; border-radius: 20px; cursor: pointer;">HOME</div>
 </header>
 
-<a href="https://wa.me/254XXXXXXXXX" class="wa-float" target="_blank">💬</a>
+<a href="https://wa.me/254700000000" class="wa-float" target="_blank">💬</a>
 
 <div id="home-page" class="page active-page">
     <div class="hero">
         <h1>PRETTY PEARL</h1>
-        <p style="font-size: 0.6rem; letter-spacing: 2px;">LUXURY BOUTIQUE</p>
+        <p style="font-size: 0.6rem; letter-spacing: 3px;">LUXURY BOUTIQUE</p>
     </div>
-    <div class="cat-selection">
-        <div class="cat-box" onclick="goToPage('fashion-selection-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600') center/cover;">FASHION</div>
-        <div class="cat-box" onclick="goToPage('beauty-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600') center/cover;">BEAUTY</div>
-        <div class="cat-box" onclick="goToPage('soap-page')" style="background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('soaps/turmeric-soap.jpg') center/cover;">ORGANIC SOAPS</div>
-    </div>
-</div>
 
-<div id="fashion-selection-page" class="page">
-    <div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
-    <div class="section-title">Fashion Categories</div>
-    <div class="cat-selection">
-        <div class="cat-box" onclick="goToPage('clothes-page')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('fashion/clothes-hero.jpg'), url('https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=600') center/cover;">CLOTHES</div>
-        <div class="cat-box" onclick="goToPage('bags-page')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('fashion/bags-hero.jpg'), url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600') center/cover;">BAGS</div>
-    </div>
-</div>
-
-<div id="clothes-page" class="page">
-    <div style="padding:15px;"><button onclick="goToPage('fashion-selection-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
-    <div class="section-title">Luxury Clothes</div>
-    <div class="product-grid" id="clothes-list"></div>
-</div>
-
-<div id="bags-page" class="page">
-    <div style="padding:15px;"><button onclick="goToPage('fashion-selection-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
-    <div class="section-title">Designer Bags</div>
-    <div class="product-grid" id="bags-list"></div>
-</div>
-
-<div id="beauty-page" class="page">
-    <div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
-    <div class="section-title">Beauty & Cosmetics</div>
-    <div class="product-grid" id="beauty-list"></div>
-</div>
-
-<div id="soap-page" class="page">
-    <div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
-    <div class="section-title">Organic Soaps</div>
-    <div class="product-grid" id="soap-list"></div>
-</div>
-
-<div id="detail-page" class="page">
-    <div style="padding:15px;"><button id="back-btn" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
-    <div class="detail-container">
-        <img id="d-img" class="detail-img" src="">
-        <div class="detail-info">
-            <h2 id="d-title" style="font-family:'Playfair Display'; margin-bottom:5px;"></h2>
-            <span id="d-price" style="color:var(--gold); font-size:1.4rem; font-weight:bold;"></span>
-            <p style="font-size: 0.8rem; color: #555; margin: 15px 0; line-height:1.5;">Premium item from the Pretty Pearl collection.</p>
-            <button class="buy-now-big" onclick="triggerMpesa()">LIPA NA M-PESA</button>
+    <div class="location-bar">
+        <span>📍</span>
+        <div class="loc-text">
+            <h4>Homa Bay Town</h4>
+            <p>Next to the Postal Office</p>
         </div>
     </div>
-</div>
 
-<div id="mpesa-popup">
-    <div class="popup-box">
-        <h3 id="m-name" style="font-size: 0.9rem;"></h3>
-        <h2 id="m-price" style="color:var(--mpesa); margin: 5px 0 20px;"></h2>
-        <input type="number" id="m-phone" placeholder="M-Pesa Number" style="width:100%; padding:15px; text-align:center; border:2px solid #eee; border-radius:10px; font-size:1rem; outline:none;">
-        <button class="buy-now-big" onclick="confirmPayment()" style="margin-top:20px;">CONFIRM ORDER</button>
-        <p onclick="closeModal()" style="color:red; margin-top:20px; font-size:0.8rem; cursor:pointer;">Cancel</p>
+    <div class="consult-tile" onclick="goToPage('consult-page')">✨ Free Skin Consultation ✨</div>
+
+    <div class="cat-selection">
+        <div class="cat-box" onclick="goToPage('fashion-selection')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600') center/cover;">FASHION</div>
+        <div class="cat-box" onclick="goToPage('beauty-selection')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600') center/cover;">BEAUTY</div>
+        <div class="cat-box" onclick="goToPage('soap-page')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600857062241-98e5dba7f214?w=600') center/cover;">SOAPS</div>
+    </div>
+
+    <div class="feedback-section">
+        <h3>Special Requests</h3>
+        <p>Looking for something specific or have an idea to improve our shop? Let us know!</p>
+        <textarea id="feedback-text" class="feedback-input" placeholder="E.g. I would love to see more summer dresses or organic body butters..."></textarea>
+        <button class="feedback-btn" onclick="sendFeedback()">SEND REQUEST</button>
     </div>
 </div>
 
-<footer><p>© 2026 Pretty Pearl Boutique</p></footer>
+<div id="fashion-selection" class="page"><div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div><div class="section-title">FASHION</div><div class="cat-selection"><div class="cat-box" onclick="goToPage('clothes-page')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=600') center/cover;">CLOTHES</div><div class="cat-box" onclick="goToPage('bags-page')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600') center/cover;">BAGS</div></div></div>
+<div id="beauty-selection" class="page"><div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div><div class="section-title">BEAUTY</div><div class="cat-selection"><div class="cat-box" onclick="goToPage('oil-page')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1610423985536-e4a8383f98c8?w=600') center/cover;">BODY OIL</div><div class="cat-box" onclick="goToPage('earrings-page')" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1611085583191-a3b1181f9b3b?w=600') center/cover;">EARRINGS</div></div></div>
+<div id="clothes-page" class="page"><div style="padding:15px;"><button onclick="goToPage('fashion-selection')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div><div class="section-title">CLOTHES</div><div class="product-grid" id="clothes-list"></div></div>
+<div id="bags-page" class="page"><div style="padding:15px;"><button onclick="goToPage('fashion-selection')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div><div class="section-title">BAGS</div><div class="product-grid" id="bags-list"></div></div>
+<div id="oil-page" class="page"><div style="padding:15px;"><button onclick="goToPage('beauty-selection')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div><div class="section-title">BODY OILS</div><div class="product-grid" id="oil-list"></div></div>
+<div id="earrings-page" class="page"><div style="padding:15px;"><button onclick="goToPage('beauty-selection')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div><div class="section-title">EARRINGS</div><div class="product-grid" id="earrings-list"></div></div>
+<div id="soap-page" class="page"><div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div><div class="section-title">SOAPS</div><div class="product-grid" id="soap-list"></div></div>
+
+<div id="consult-page" class="page"><div style="padding:15px;"><button onclick="goToPage('home-page')" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div><div class="section-title">Skin Advice</div><div style="padding:25px;"><textarea id="skin-text" placeholder="Tell us your skin problem..." style="width:100%; padding:15px; border-radius:12px; border:1px solid #ddd; min-height:150px;"></textarea><button onclick="sendAdvice()" class="buy-now-big" style="background:var(--wa);">CONSULT ON WHATSAPP</button></div></div>
+
+<div id="detail-page" class="page">
+    <div style="padding:15px;"><button id="back-to-grid" style="border:none; background:none; font-weight:bold; color:var(--gold);">← BACK</button></div>
+    <div class="detail-container">
+        <img id="d-img" class="detail-img" src=""><h2 id="d-title" style="font-family:'Playfair Display';"></h2><span id="d-price" style="color:var(--gold); font-size:1.5rem; font-weight:bold;"></span><button class="buy-now-big" onclick="openMpesa()">LIPA NA M-PESA</button>
+    </div>
+</div>
+
+<div id="mpesa-popup"><div class="popup-box"><h3 id="m-name"></h3><h2 id="m-price" style="color:var(--mpesa);"></h2><input type="number" id="m-phone" placeholder="M-Pesa Number" style="width:100%; padding:15px; text-align:center; border:2px solid #eee; border-radius:12px;"><button class="buy-now-big" onclick="confirmOrder()">CONFIRM ORDER</button><p onclick="closeMpesa()" style="color:red; margin-top:20px; cursor:pointer;">Cancel</p></div></div>
+
+<footer><p><b>PRETTY PEARL LUXE BOUTIQUE</b><br>Homa Bay Town - Next to the Postal Office<br>© 2026 Pretty Pearl</p></footer>
 
 <script>
-    let item = {};
+    let currentItem = {};
+    const waNumber = "254720289644"; // SET REAL NUMBER HERE
 
     function goToPage(id) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
@@ -133,70 +137,61 @@
         window.scrollTo(0,0);
     }
 
-    function openDetail(name, price, img, type) {
-        item = { name, price, img, type };
+    function openDetail(name, price, img, parentId) {
+        currentItem = { name, price, img, parentId };
         document.getElementById('d-title').innerText = name;
         document.getElementById('d-price').innerText = "KSh " + price.toLocaleString();
         document.getElementById('d-img').src = img;
-        document.getElementById('back-btn').onclick = () => goToPage(type + '-page');
+        document.getElementById('back-to-grid').onclick = () => goToPage(parentId);
         goToPage('detail-page');
     }
 
-    // --- PRODUCT LISTS ---
+    // --- DATA ---
+    const data = {
+        soap: [{ name: "Organic Rice Soap", price: 450, img: "soaps/rice-soap.jpg" }],
+        clothes: [{ name: "Silk Wrap Gown", price: 3500, img: "fashion/dress1.jpg" }],
+        bags: [{ name: "Designer Leather Tote", price: 4500, img: "fashion/bag1.jpg" }],
+        oil: [{ name: "Radiance Body Elixir", price: 1200, img: "beauty/oil1.jpg" }],
+        earrings: [{ name: "Luxe Gold Accents", price: 1200, img: "beauty/earring1.jpg" }]
+    };
 
-    // 1. SOAPS
-    const soaps = [
-        { name: "Rice Soap Moisturizer", price: 450, img: "soaps/rice-soap.jpg" },
-        { name: "Kojic Acid Retinol Soap", price: 600, img: "soaps/kojic-soap.jpg" },
-        { name: "Organic Turmeric Soap", price: 450, img: "soaps/turmeric-soap.jpg" }
-    ];
-
-    // 2. CLOTHES
-    const clothes = [
-        { name: "Silk Wrap Dress", price: 3500, img: "fashion/dress1.jpg" },
-        { name: "Floral Summer Top", price: 1500, img: "fashion/top1.jpg" }
-    ];
-
-    // 3. BAGS
-    const bags = [
-        { name: "Luxe Leather Tote", price: 4500, img: "fashion/bag1.jpg" },
-        { name: "Pearl Evening Clutch", price: 3200, img: "fashion/clutch1.jpg" }
-    ];
-
-    // 4. BEAUTY
-    const beauty = [
-        { name: "Glow Serum", price: 1800, img: "beauty/serum1.jpg" }
-    ];
-
-    // HELPER TO RENDER
-    function renderList(list, elementId, type) {
-        const grid = document.getElementById(elementId);
+    function render(list, containerId, pageId) {
+        const container = document.getElementById(containerId);
         list.forEach(p => {
-            grid.innerHTML += `<div class="product-card" onclick="openDetail('${p.name}', ${p.price}, '${p.img}', '${type}')">
-                <img src="${p.img}" onerror="this.src='https://via.placeholder.com/150'">
-                <h3>${p.name}</h3><span>KSh ${p.price.toLocaleString()}</span>
-            </div>`;
+            container.innerHTML += `<div class="product-card" onclick="openDetail('${p.name}', ${p.price}, '${p.img}', '${pageId}')"><img src="${p.img}" onerror="this.src='https://via.placeholder.com/150?text=Pretty+Pearl'"><h3>${p.name}</h3><span>KSh ${p.price.toLocaleString()}</span></div>`;
         });
     }
 
-    renderList(soaps, 'soap-list', 'soap');
-    renderList(clothes, 'clothes-list', 'clothes');
-    renderList(bags, 'bags-list', 'bags');
-    renderList(beauty, 'beauty-list', 'beauty');
+    render(data.soap, 'soap-list', 'soap-page');
+    render(data.clothes, 'clothes-list', 'clothes-page');
+    render(data.bags, 'bags-list', 'bags-page');
+    render(data.oil, 'oil-list', 'oil-page');
+    render(data.earrings, 'earrings-list', 'earrings-page');
 
-    function triggerMpesa() {
-        document.getElementById('m-name').innerText = item.name;
-        document.getElementById('m-price').innerText = "KSh " + item.price.toLocaleString();
-        document.getElementById('mpesa-popup').style.display = 'flex';
+    // NEW FEEDBACK SCRIPT
+    function sendFeedback() {
+        const text = document.getElementById('feedback-text').value;
+        if(!text) return alert("Please type your suggestion first!");
+        window.open(`https://wa.me/${waNumber}?text=Pretty Pearl Feedback/Request:%0A${text}`);
     }
 
-    function closeModal() { document.getElementById('mpesa-popup').style.display = 'none'; }
+    function sendAdvice() {
+        const text = document.getElementById('skin-text').value;
+        if(!text) return alert("Please type your concern first!");
+        window.open(`https://wa.me/${waNumber}?text=Skin Consultation: ${text}`);
+    }
 
-    function confirmPayment() {
-        let phone = document.getElementById('m-phone').value;
-        if(phone.length < 10) return alert("Enter M-Pesa Number");
-        window.open(`https://wa.me/254720289644?text=New Order: ${item.name} - KSh ${item.price} - M-Pesa: ${phone}`);
-        closeModal();
+    function openMpesa() {
+        document.getElementById('m-name').innerText = currentItem.name;
+        document.getElementById('m-price').innerText = "KSh " + currentItem.price.toLocaleString();
+        document.getElementById('mpesa-popup').style.display = 'flex';
+    }
+    function closeMpesa() { document.getElementById('mpesa-popup').style.display = 'none'; }
+    function confirmOrder() {
+        const phone = document.getElementById('m-phone').value;
+        if(phone.length < 10) return alert("Enter valid M-Pesa number");
+        window.open(`https://wa.me/${waNumber}?text=Order: ${currentItem.name}%0APrice: KSh ${currentItem.price}%0APhone: ${phone}`);
+        closeMpesa();
     }
 </script>
 </body>
