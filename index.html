@@ -225,15 +225,40 @@
 
     // ADDED DESCRIPTIONS TO THE PRODUCTS
     const products = {
-        soap: [
-            { name: "Organic Rice Soap", price: 450, img: "soaps/rice-soap.jpg", inStock: true, desc: "Brightens and evens skin tone naturally using pure Thai rice extracts. Gentle for all skin types." },
-            { name: "Kojic Retinol Bar", price: 600, img: "soaps/kojic-soap.jpg", inStock: false, desc: "A powerful combination for skin resurfacing and targeting dark spots. Best used at night." },
-            { name: "Turmeric Glow Bar", price: 450, img: "soaps/turmeric-soap.jpg", inStock: true, desc: "Anti-inflammatory bar that brings out a natural radiance and helps with acne scars." }
+      soap: [
+            { name: "Organic Rice Soap", price: 450, img: "rice-soap.jpg", inStock: true, desc: "Brightens and evens skin tone naturally using pure Thai rice extracts. Gentle for all skin types." },
+            { name: "Kojic Retinol Bar", price: 200, img: "kojie soap.jpeg", inStock: false, desc: "A powerful combination for skin resurfacing and targeting dark spots. Best used at night." },
+            { name: "Tumeric honey soap", price: 600, img: "tumeric honey soap.jpeg", inStock: false, desc: "A powerful combination for skin resurfacing and targeting dark spots. Best used at night." },
+            { name: "Goat Milk soap", price: 250, img: "goatmilk soap.jpeg", inStock: false, desc: "A powerful combination for skin resurfacing and targeting dark spots. Best used at night." },
+            { name: "Dove Freshenning Soap", price: 500, img: "dove soap.jpeg", inStock: false, desc: "A powerful combination for skin resurfacing and targeting dark spots. Best used at night." },
+            { name: "Gluta Naturall Soap Bar", price: 600, img: "gluta-c soap.jpeg", inStock: false, desc: "A powerful combination for skin resurfacing and targeting dark spots. Best used at night." },
+            { name: "Asantee Papaya Soap", price: 350, img: "asntee soap.jpeg", inStock: false, desc: "A powerful combination for skin resurfacing and targeting dark spots. Best used at night." },
+            { name: "Turmeric Glow Bar", price: 450, img: "turmeric soap.jpeg", inStock: true, desc: "Anti-inflammatory bar that brings out a natural radiance and helps with acne scars." }
         ],
-        clothes: [{ name: "Silk Wrap Gown", price: 3500, img: "fashion/dress1.jpg", inStock: true, desc: "Elegant premium silk wrap dress. Perfect for both formal events and luxury lounging." }],
-        bags: [{ name: "Luxe Tote Bag", price: 4500, img: "fashion/bag1.jpg", inStock: true, desc: "High-quality leather tote with gold-tone hardware. Spacious enough for all your essentials." }],
-        oil: [{ name: "Radiance Body Oil", price: 1200, img: "beauty/oil1.jpg", inStock: true, desc: "Infused with essential minerals to give your skin a non-greasy, 24-hour glow." }],
-        acc: [{ name: "Gold Stud Accents", price: 1200, img: "beauty/earring1.jpg", inStock: true, desc: "Minimalist 18k gold plated studs. Hypoallergenic and timeless." }]
+        clothes: [
+	    { name: "Silk Wrap Gown (Black)", price: 3500, img: "fashion/curl dress black.jpg", inStock: true, desc: "Elegant premium silk wrap dress. BLACK. Perfect for both formal events and luxury lounging." },
+            { name: "Silk Wrap Gown (Grey)", price: 3500, img: "fashion/curl dress grey.jpg", inStock: true, desc: "Elegant premium silk wrap dress. GREY. Perfect for both formal events and luxury lounging." }
+	],
+        bags: [
+	    { name: "Luxe Tote Bag", price: 4500, img: "fashion/bag1.jpg", inStock: true, desc: "High-quality leather tote with gold-tone hardware. Spacious enough for all your essentials." }
+	],
+  
+        oil: [
+	    { name: "Active Caviar Drip", price: 650, img: "beauty/active.jpeg", inStock: true, desc: "Infused with essential minerals and skin whitenning and removing dark paches." },
+            { name: "Collagen sakura", price: 1200, img: "beauty/collagen sakura.jpeg", inStock: true, desc: "Infused with essential minerals to give your skin a non-greasy, 24-hour glow." },
+            { name: "Disaar skincare", price: 800, img: "beauty/dissar.jpeg", inStock: true, desc: "Moisurising body Lotion help to fade wrinkles and restore skin elasity." },
+            { name: "Shear Better 24 hr body lotion", price: 1400, img: "beauty/shear.jpeg", inStock: true, desc: "Contain 7 nourishing oils + butters smoothing protection from dry skin, 24-hour glow." },
+            { name: "Vaseline daily brightening", price: 950, img: "beauty/vaseline.jpeg", inStock: true, desc: "For healthy brightening." }
+        
+	],
+        acc: [
+            { name: "Pearl green", price: 250, img: "beauty/e1.jpeg", inStock: true, desc: "Minimalist 18k gold plated studs. Hypoallergenic and timeless." },
+            { name: "purple flower", price: 200, img: "beauty/e2.jpeg", inStock: true, desc: "Minimalist 18k gold plated studs. Hypoallergenic and timeless." },
+            { name: "Red hood", price: 1200, img: "beauty/e3.jpeg", inStock: true, desc: "Minimalist 18k gold plated studs. Hypoallergenic and timeless." },
+            { name: "Purlpe berry", price: 150, img: "beauty/e4.jpeg", inStock: true, desc: "Minimalist 18k gold plated studs. Hypoallergenic and timeless." },
+            { name: "Gold Accents", price: 300, img: "beauty/e5.jpeg", inStock: true, desc: "Minimalist 18k gold plated studs. Hypoallergenic and timeless." },
+            { name: "Gold loop Accents", price: 400, img: "beauty/e6.jpeg", inStock: true, desc: "Minimalist 18k gold plated studs. Hypoallergenic and timeless." }
+	]
     };
 
     function checkPopup() { document.getElementById('welcome-popup').style.display = 'flex'; }
